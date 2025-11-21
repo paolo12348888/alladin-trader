@@ -805,7 +805,7 @@ class QuantitativeAlphaService {
       accuracy: 0.8
     };
     
-    /*
+    /* 
     // Convert to tensors
     const xs = tf.tensor2d(normalizedFeatures);
     const ys = tf.tensor2d(normalizedLabels);
@@ -869,7 +869,7 @@ class QuantitativeAlphaService {
       featureImportance,
       accuracy: history.history.acc?.[history.history.acc.length - 1] || 0
     };
-  } */
+  */
 
   /**
    * Normalize features to [0,1] range
