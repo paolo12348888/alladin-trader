@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm install --prefer-offline && vite",
-    "build": "pnpm install --prefer-offline && rm -rf node_modules/.vite-temp && vite build",
+    "build": "pnpm run build:prod",
     "build:prod": "pnpm install --prefer-offline && rm -rf node_modules/.vite-temp && tsc -b && BUILD_MODE=prod vite build",
     "lint": "pnpm install --prefer-offline && eslint .",
     "preview": "pnpm install --prefer-offline && vite preview",
     "install-deps": "pnpm install --prefer-offline",
     "clean": "rm -rf node_modules .pnpm-store pnpm-lock.yaml && pnpm store prune",
     "railway-build": "pnpm install --frozen-lockfile && pnpm run build",
-    "railway-start": "pnpm run preview"
+    "railway-start": "pnpm run preview",
+    "start": "pnpm run preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -97,7 +98,6 @@
     "vite-plugin-source-identifier": "1.1.2"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": "18"
   }
 }
