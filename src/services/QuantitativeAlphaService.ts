@@ -869,7 +869,7 @@ class QuantitativeAlphaService {
       featureImportance,
       accuracy: history.history.acc?.[history.history.acc.length - 1] || 0
     };
-   */
+  */
 
   /**
    * Normalize features to [0,1] range
