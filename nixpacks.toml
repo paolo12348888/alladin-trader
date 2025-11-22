@@ -1,0 +1,6 @@
+[providers.node]
+nodeVersion = "18"
+
+[variables]
+NPM_CONFIG_PREFIX = "/app/.npm-global"
+NPM_CONFIG_CACHE = "/app/.npm"
