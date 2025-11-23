@@ -3,57 +3,22 @@
     "Coordinator": {
       "1": {
         "id": "1",
-        "content": "Analizzare tutti gli errori TypeScript dal log di Render",
-        "details": "1. Categorizzare tutti i 50+ errori per file\n2. Identificare dipendenze mancanti\n3. Mappare errori di tipo e proprietà\n4. Creare lista prioritizzata delle correzioni",
+        "content": "Risolvere errori TypeScript su Render deployment",
+        "details": "Corretti tutti i 50+ errori TypeScript nel progetto alladin-trader. Repository: paolo12348888/alladin-trader",
         "status": "completed",
         "priority": "high"
       },
       "2": {
         "id": "2",
-        "content": "Correggere errori di dipendenze mancanti",
-        "details": "1. Installare @tensorflow/tfjs, brain.js, ml-regression, @turf/turf\n2. Rimuovere dipendenze non necessarie come 'streamdown'\n3. Aggiornare importazioni nei file",
+        "content": "Correggere errori pnpm lockfile nel Dockerfile",
+        "details": "Modificato Dockerfile per usare --no-frozen-lockfile invece di --frozen-lockfile per permettere l'aggiornamento delle nuove dipendenze",
         "status": "completed",
         "priority": "high"
       },
       "3": {
         "id": "3",
-        "content": "Correggere errori nei servizi principali",
-        "details": "1. QuantitativeAlphaService.ts: correggere importazioni e tipi\n2. RealTimeFinancialService.ts: errori di tipi array/number\n3. FixedIncomeCreditService.ts: aggiornare rating types\n4. SupplyChainService.ts: correggere type '5D'",
-        "status": "completed",
-        "priority": "high"
-      },
-      "4": {
-        "id": "4",
-        "content": "Correggere errori nei componenti React",
-        "details": "1. BudgetConfig.tsx: correggere tipo XTBApiService\n2. Chatbot.tsx: proprietà viewportRef\n3. LanguageSelector.tsx: proprietà i18n mancanti\n4. StatisticalArbitrageAlgo.tsx: proprietà mancanti",
-        "status": "completed",
-        "priority": "high"
-      },
-      "5": {
-        "id": "5",
-        "content": "Correggere errori di UI components",
-        "details": "1. AlternativeInvestmentsGuideContent.tsx: Scatter3D\n2. calendar.tsx: compatibilità react-day-picker\n3. Correggere tutti i componenti UI Radix/ui",
-        "status": "completed",
-        "priority": "medium"
-      },
-      "6": {
-        "id": "6",
-        "content": "Correggere errori nelle pagine principali",
-        "details": "1. AIPredictions.tsx: Loader2 import\n2. AdvancedCharts.tsx: overlay property\n3. ETFOptimization.tsx: ValueType casting\n4. HedgeFundAlgo.tsx: correggere type\n5. Home.tsx: rimuovere streamdown\n6. QuantitativeAlpha.tsx: import types\n7. Settings.tsx: errori di chiamate\n8. SignalRoom.tsx: isStreaming property",
-        "status": "completed",
-        "priority": "high"
-      },
-      "7": {
-        "id": "7",
-        "content": "Correggere errori negli altri servizi",
-        "details": "1. hedgeFundAlgoService.ts: stop_loss_pct, take_profit_pct\n2. AlternativeInvestmentsService.ts: tipo \"Diversified\"\n3. ETFOptimizationService.ts: proprietà private\n4. Verificare tutti i file services/",
-        "status": "completed",
-        "priority": "high"
-      },
-      "8": {
-        "id": "8",
-        "content": "Test e push finale",
-        "details": "1. Commit di tutte le correzioni\n2. Push su GitHub branch main\n3. Verificare che il deploy funzioni su Render",
+        "content": "Correggere versione ml-regression nel package.json",
+        "details": "Aggiornata versione ml-regression da ^2.0.1 (inesistente) a ^6.3.0 (versione corretta). Repository pushato con successo su GitHub.",
         "status": "completed",
         "priority": "high"
       }

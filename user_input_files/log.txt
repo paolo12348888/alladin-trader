@@ -1,105 +1,113 @@
-2025-11-23T09:54:54.511434595Z ==> Cloning from https://github.com/paolo12348888/alladin-trader
-2025-11-23T09:54:55.677513172Z ==> Checking out commit 2247e4af1485b692691e4f8512a29cfaf9b8da15 in branch main
-2025-11-23T09:55:09.030631388Z #1 [internal] load build definition from Dockerfile
-2025-11-23T09:55:09.030659589Z #1 transferring dockerfile: 373B done
-2025-11-23T09:55:09.030662559Z #1 DONE 0.0s
-2025-11-23T09:55:09.030664299Z 
-2025-11-23T09:55:09.030666059Z #2 [internal] load metadata for docker.io/library/node:18-alpine
-2025-11-23T09:55:09.186540213Z #2 ...
-2025-11-23T09:55:09.186552603Z 
-2025-11-23T09:55:09.186556043Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
-2025-11-23T09:55:09.186559764Z #3 DONE 0.0s
-2025-11-23T09:55:09.336824916Z 
-2025-11-23T09:55:09.336841176Z #2 [internal] load metadata for docker.io/library/node:18-alpine
-2025-11-23T09:55:09.461774199Z #2 DONE 0.6s
-2025-11-23T09:55:09.587234883Z 
-2025-11-23T09:55:09.587257663Z #4 [internal] load .dockerignore
-2025-11-23T09:55:09.587260643Z #4 transferring context: 2B done
-2025-11-23T09:55:09.587263353Z #4 DONE 0.0s
-2025-11-23T09:55:09.587265693Z 
-2025-11-23T09:55:09.587268543Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T09:55:09.587271033Z #5 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
-2025-11-23T09:55:09.693267165Z #5 ...
-2025-11-23T09:55:09.693282345Z 
-2025-11-23T09:55:09.693286445Z #6 [internal] load build context
-2025-11-23T09:55:09.693289785Z #6 transferring context: 2.66MB 0.1s done
-2025-11-23T09:55:09.693292575Z #6 DONE 0.2s
-2025-11-23T09:55:09.693295225Z 
-2025-11-23T09:55:09.693298606Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T09:55:10.140530255Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
-2025-11-23T09:55:10.317431046Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
-2025-11-23T09:55:11.344760491Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 1.2s done
-2025-11-23T09:55:11.344789172Z #5 DONE 1.8s
-2025-11-23T09:55:11.573995519Z 
-2025-11-23T09:55:11.574025599Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T09:55:11.574030949Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.1s done
-2025-11-23T09:55:11.574034689Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0.0s done
-2025-11-23T09:55:11.57403826Z #5 DONE 1.9s
-2025-11-23T09:55:11.57404168Z 
-2025-11-23T09:55:11.57404596Z #7 [2/9] RUN npm install -g pnpm
-2025-11-23T09:55:12.834128807Z #7 1.411 
-2025-11-23T09:55:12.834151698Z #7 1.411 added 1 package in 1s
-2025-11-23T09:55:12.987379805Z #7 1.411 
-2025-11-23T09:55:12.987408395Z #7 1.411 1 package is looking for funding
-2025-11-23T09:55:12.987413926Z #7 1.411   run `npm fund` for details
-2025-11-23T09:55:12.987418916Z #7 1.413 npm notice
-2025-11-23T09:55:12.987424146Z #7 1.413 npm notice New major version of npm available! 10.8.2 -> 11.6.3
-2025-11-23T09:55:12.987428886Z #7 1.413 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
-2025-11-23T09:55:12.987434066Z #7 1.413 npm notice To update run: npm install -g npm@11.6.3
-2025-11-23T09:55:12.987438576Z #7 1.413 npm notice
-2025-11-23T09:55:13.213405072Z #7 DONE 1.8s
-2025-11-23T09:55:13.36528029Z 
-2025-11-23T09:55:13.36531009Z #8 [3/9] WORKDIR /app
-2025-11-23T09:55:14.796542444Z #8 DONE 1.6s
-2025-11-23T09:55:14.947331848Z 
-2025-11-23T09:55:14.947361819Z #9 [4/9] COPY package.json pnpm-lock.yaml ./
-2025-11-23T09:55:14.953765107Z #9 DONE 0.2s
-2025-11-23T09:55:15.086913798Z 
-2025-11-23T09:55:15.086935709Z #10 [5/9] COPY public ./public
-2025-11-23T09:55:15.086941599Z #10 DONE 0.0s
-2025-11-23T09:55:15.086945889Z 
-2025-11-23T09:55:15.086951209Z #11 [6/9] COPY src ./src
-2025-11-23T09:55:15.086954199Z #11 DONE 0.1s
-2025-11-23T09:55:15.31405929Z 
-2025-11-23T09:55:15.3140835Z #12 [7/9] COPY *.json *.js *.ts ./
-2025-11-23T09:55:15.31408793Z #12 DONE 0.1s
-2025-11-23T09:55:15.314091561Z 
-2025-11-23T09:55:15.314095271Z #13 [8/9] RUN pnpm install --no-frozen-lockfile
-2025-11-23T09:55:17.283415027Z #13 2.119  WARN  Installing a dependency from a non-existent directory: /tmp/pnpm-store
-2025-11-23T09:55:17.572675347Z #13 2.409 Progress: resolved 0, reused 0, downloaded 1, added 0
-2025-11-23T09:55:18.57597412Z #13 3.412 Progress: resolved 14, reused 0, downloaded 12, added 0
-2025-11-23T09:55:19.595462324Z #13 4.432 Progress: resolved 33, reused 0, downloaded 31, added 0
-2025-11-23T09:55:20.690347045Z #13 5.526 Progress: resolved 46, reused 0, downloaded 44, added 0
-2025-11-23T09:55:21.774739208Z #13 6.611 Progress: resolved 59, reused 0, downloaded 57, added 0
-2025-11-23T09:55:22.773942152Z #13 7.610 Progress: resolved 72, reused 0, downloaded 70, added 0
-2025-11-23T09:55:23.774842962Z #13 8.611 Progress: resolved 77, reused 0, downloaded 76, added 0
-2025-11-23T09:55:24.319415665Z #13 9.156  ERR_PNPM_NO_MATCHING_VERSION  No matching version found for ml-regression@^2.0.1 while fetching it from https://registry.npmjs.org/
-2025-11-23T09:55:24.319437976Z #13 9.156 
-2025-11-23T09:55:24.319442446Z #13 9.156 This error happened while installing a direct dependency of /app
-2025-11-23T09:55:24.319445486Z #13 9.156 
-2025-11-23T09:55:24.319449006Z #13 9.156 The latest release of ml-regression is "6.3.0".
-2025-11-23T09:55:24.319451806Z #13 9.156 
-2025-11-23T09:55:24.319456426Z #13 9.156 If you need the full list of all 21 published versions run "$ pnpm view ml-regression versions".
-2025-11-23T09:55:26.062887807Z #13 ERROR: process "/bin/sh -c pnpm install --no-frozen-lockfile" did not complete successfully: exit code: 1
-2025-11-23T09:55:26.098047451Z ------
-2025-11-23T09:55:26.098071371Z  > [8/9] RUN pnpm install --no-frozen-lockfile:
-2025-11-23T09:55:26.098077401Z 6.611 Progress: resolved 59, reused 0, downloaded 57, added 0
-2025-11-23T09:55:26.098081581Z 7.610 Progress: resolved 72, reused 0, downloaded 70, added 0
-2025-11-23T09:55:26.098085581Z 8.611 Progress: resolved 77, reused 0, downloaded 76, added 0
-2025-11-23T09:55:26.098092381Z 9.156  ERR_PNPM_NO_MATCHING_VERSION  No matching version found for ml-regression@^2.0.1 while fetching it from https://registry.npmjs.org/
-2025-11-23T09:55:26.098099252Z 9.156 
-2025-11-23T09:55:26.098107252Z 9.156 This error happened while installing a direct dependency of /app
-2025-11-23T09:55:26.098111602Z 9.156 
-2025-11-23T09:55:26.098115112Z 9.156 The latest release of ml-regression is "6.3.0".
-2025-11-23T09:55:26.098118802Z 9.156 
-2025-11-23T09:55:26.098123722Z 9.156 If you need the full list of all 21 published versions run "$ pnpm view ml-regression versions".
-2025-11-23T09:55:26.098127302Z ------
-2025-11-23T09:55:26.098811857Z Dockerfile:15
-2025-11-23T09:55:26.098822217Z --------------------
-2025-11-23T09:55:26.098826557Z   13 |     
-2025-11-23T09:55:26.098832408Z   14 |     # Installa dipendenze
-2025-11-23T09:55:26.098836488Z   15 | >>> RUN pnpm install --no-frozen-lockfile
-2025-11-23T09:55:26.098841608Z   16 |     
-2025-11-23T09:55:26.098845628Z   17 |     # Build
-2025-11-23T09:55:26.098849528Z --------------------
-2025-11-23T09:55:26.098864918Z error: failed to solve: process "/bin/sh -c pnpm install --no-frozen-lockfile" did not complete successfully: exit code: 1
+2025-11-23T09:57:47.02732575Z ==> Cloning from https://github.com/paolo12348888/alladin-trader
+2025-11-23T09:57:47.611614811Z ==> Checking out commit 7e3994338e969f545f0fd75030abe838c211854f in branch main
+2025-11-23T09:58:30.808255903Z #1 [internal] load build definition from Dockerfile
+2025-11-23T09:58:30.808293115Z #1 transferring dockerfile: 373B done
+2025-11-23T09:58:30.808297745Z #1 DONE 0.0s
+2025-11-23T09:58:30.808300735Z 
+2025-11-23T09:58:30.808303565Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-23T09:58:30.981781663Z #2 ...
+2025-11-23T09:58:30.981799674Z 
+2025-11-23T09:58:30.981806323Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+2025-11-23T09:58:30.981812844Z #3 DONE 0.0s
+2025-11-23T09:58:31.132090574Z 
+2025-11-23T09:58:31.132116475Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-23T09:58:31.735104645Z #2 DONE 1.1s
+2025-11-23T09:58:31.905692531Z 
+2025-11-23T09:58:31.905717172Z #4 [internal] load .dockerignore
+2025-11-23T09:58:31.905722222Z #4 transferring context: 2B done
+2025-11-23T09:58:31.905726532Z #4 DONE 0.0s
+2025-11-23T09:58:31.905730492Z 
+2025-11-23T09:58:31.905735242Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:58:31.905739732Z #5 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2025-11-23T09:58:32.055730195Z #5 ...
+2025-11-23T09:58:32.055762046Z 
+2025-11-23T09:58:32.055773777Z #6 [internal] load build context
+2025-11-23T09:58:32.055779017Z #6 transferring context: 2.66MB 0.1s done
+2025-11-23T09:58:32.055783847Z #6 DONE 0.2s
+2025-11-23T09:58:32.055787747Z 
+2025-11-23T09:58:32.055791297Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:58:32.476594982Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+2025-11-23T09:58:32.476614022Z #5 DONE 0.7s
+2025-11-23T09:58:32.62717568Z 
+2025-11-23T09:58:32.627200481Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:58:32.627206961Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+2025-11-23T09:59:51.669103556Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 79.2s done
+2025-11-23T09:59:51.669131897Z #5 DONE 79.9s
+2025-11-23T09:59:51.819484331Z 
+2025-11-23T09:59:51.819502572Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:59:51.819507892Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+2025-11-23T10:01:39.735991681Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 108.1s done
+2025-11-23T10:01:39.838477514Z #5 DONE 188.0s
+2025-11-23T10:01:39.886330187Z 
+2025-11-23T10:01:39.886349047Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T10:01:39.886355757Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549
+2025-11-23T10:03:07.92449797Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 88.2s done
+2025-11-23T10:03:07.92451682Z #5 DONE 276.2s
+2025-11-23T10:03:08.077250638Z 
+2025-11-23T10:03:08.077273088Z #7 [2/9] RUN npm install -g pnpm
+2025-11-23T10:03:09.559092049Z #7 1.632 
+2025-11-23T10:03:09.55911603Z #7 1.632 added 1 package in 1s
+2025-11-23T10:03:09.71317231Z #7 1.632 
+2025-11-23T10:03:09.713190841Z #7 1.633 1 package is looking for funding
+2025-11-23T10:03:09.713194901Z #7 1.633   run `npm fund` for details
+2025-11-23T10:03:09.713208051Z #7 1.636 npm notice
+2025-11-23T10:03:09.713210622Z #7 1.636 npm notice New major version of npm available! 10.8.2 -> 11.6.3
+2025-11-23T10:03:09.713212351Z #7 1.636 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
+2025-11-23T10:03:09.713214582Z #7 1.636 npm notice To update run: npm install -g npm@11.6.3
+2025-11-23T10:03:09.713216272Z #7 1.636 npm notice
+2025-11-23T10:03:13.733388713Z #7 DONE 5.8s
+2025-11-23T10:03:13.887816733Z 
+2025-11-23T10:03:13.887843454Z #8 [3/9] WORKDIR /app
+2025-11-23T10:03:18.377811161Z #8 DONE 4.6s
+2025-11-23T10:03:18.531345149Z 
+2025-11-23T10:03:18.53137384Z #9 [4/9] COPY package.json pnpm-lock.yaml ./
+2025-11-23T10:03:22.854121311Z #9 DONE 4.5s
+2025-11-23T10:03:23.014105129Z 
+2025-11-23T10:03:23.01412946Z #10 [5/9] COPY public ./public
+2025-11-23T10:03:23.719421074Z #10 DONE 0.9s
+2025-11-23T10:03:23.878958832Z 
+2025-11-23T10:03:23.878983032Z #11 [6/9] COPY src ./src
+2025-11-23T10:03:24.291553988Z #11 DONE 0.6s
+2025-11-23T10:03:24.447811084Z 
+2025-11-23T10:03:24.447836575Z #12 [7/9] COPY *.json *.js *.ts ./
+2025-11-23T10:03:24.579235231Z #12 DONE 0.3s
+2025-11-23T10:03:24.735423145Z 
+2025-11-23T10:03:24.735451936Z #13 [8/9] RUN pnpm install --no-frozen-lockfile
+2025-11-23T10:03:26.821594277Z #13 2.236  WARN  Installing a dependency from a non-existent directory: /tmp/pnpm-store
+2025-11-23T10:03:27.104319545Z #13 2.326 Progress: resolved 0, reused 0, downloaded 1, added 0
+2025-11-23T10:03:27.916437743Z #13 3.331 Progress: resolved 44, reused 0, downloaded 41, added 0
+2025-11-23T10:03:28.917123993Z #13 4.332 Progress: resolved 52, reused 0, downloaded 49, added 0
+2025-11-23T10:03:30.004737719Z #13 5.420 Progress: resolved 67, reused 0, downloaded 64, added 0
+2025-11-23T10:03:31.005540132Z #13 6.421 Progress: resolved 77, reused 0, downloaded 76, added 0
+2025-11-23T10:03:32.012650382Z #13 7.428 Progress: resolved 78, reused 0, downloaded 77, added 0
+2025-11-23T10:03:32.373598311Z #13 7.789  ERR_PNPM_NO_MATCHING_VERSION  No matching version found for brain.js@^2.0.0 while fetching it from https://registry.npmjs.org/
+2025-11-23T10:03:32.373616492Z #13 7.789 
+2025-11-23T10:03:32.373620302Z #13 7.789 This error happened while installing a direct dependency of /app
+2025-11-23T10:03:32.373623232Z #13 7.789 
+2025-11-23T10:03:32.373627022Z #13 7.789 The latest release of brain.js is "2.0.0-beta.24".
+2025-11-23T10:03:32.373629882Z #13 7.789 
+2025-11-23T10:03:32.373633272Z #13 7.789 If you need the full list of all 82 published versions run "$ pnpm view brain.js versions".
+2025-11-23T10:04:17.021802187Z #13 ERROR: process "/bin/sh -c pnpm install --no-frozen-lockfile" did not complete successfully: exit code: 1
+2025-11-23T10:04:18.235959856Z ------
+2025-11-23T10:04:18.235977837Z  > [8/9] RUN pnpm install --no-frozen-lockfile:
+2025-11-23T10:04:18.235981987Z 5.420 Progress: resolved 67, reused 0, downloaded 64, added 0
+2025-11-23T10:04:18.235985077Z 6.421 Progress: resolved 77, reused 0, downloaded 76, added 0
+2025-11-23T10:04:18.235987947Z 7.428 Progress: resolved 78, reused 0, downloaded 77, added 0
+2025-11-23T10:04:18.235993007Z 7.789  ERR_PNPM_NO_MATCHING_VERSION  No matching version found for brain.js@^2.0.0 while fetching it from https://registry.npmjs.org/
+2025-11-23T10:04:18.235995957Z 7.789 
+2025-11-23T10:04:18.235999787Z 7.789 This error happened while installing a direct dependency of /app
+2025-11-23T10:04:18.236002657Z 7.789 
+2025-11-23T10:04:18.236005427Z 7.789 The latest release of brain.js is "2.0.0-beta.24".
+2025-11-23T10:04:18.236008327Z 7.789 
+2025-11-23T10:04:18.236012618Z 7.789 If you need the full list of all 82 published versions run "$ pnpm view brain.js versions".
+2025-11-23T10:04:18.236022228Z ------
+2025-11-23T10:04:18.236632123Z Dockerfile:15
+2025-11-23T10:04:18.236645153Z --------------------
+2025-11-23T10:04:18.236648014Z   13 |     
+2025-11-23T10:04:18.236650603Z   14 |     # Installa dipendenze
+2025-11-23T10:04:18.236653174Z   15 | >>> RUN pnpm install --no-frozen-lockfile
+2025-11-23T10:04:18.236655624Z   16 |     
+2025-11-23T10:04:18.236657704Z   17 |     # Build
+2025-11-23T10:04:18.236659794Z --------------------
+2025-11-23T10:04:18.236662694Z error: failed to solve: process "/bin/sh -c pnpm install --no-frozen-lockfile" did not complete successfully: exit code: 1
+2025-11-23T10:04:18.324497174Z error: exit status 1
