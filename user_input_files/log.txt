@@ -1,56 +1,87 @@
-2025-11-23T10:18:44.325264762Z ==> Cloning from https://github.com/paolo12348888/alladin-trader
-2025-11-23T10:18:45.296297058Z ==> Checking out commit 6f6c9d1f5eee4517de0ac8e0d08a1758c48c9311 in branch main
-2025-11-23T10:18:58.899152274Z #1 [internal] load build definition from Dockerfile
-2025-11-23T10:18:59.756683164Z #1 transferring dockerfile:
-2025-11-23T10:18:59.956178025Z #1 transferring dockerfile: 373B 0.0s done
-2025-11-23T10:18:59.99719118Z #1 DONE 1.2s
-2025-11-23T10:19:00.108405453Z 
-2025-11-23T10:19:00.108429585Z #2 [internal] load metadata for docker.io/library/node:18-alpine
-2025-11-23T10:19:00.499465377Z #2 ...
-2025-11-23T10:19:00.499482368Z 
-2025-11-23T10:19:00.499486039Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
-2025-11-23T10:19:00.499492699Z #3 DONE 0.0s
-2025-11-23T10:19:00.649804396Z 
-2025-11-23T10:19:00.649829538Z #2 [internal] load metadata for docker.io/library/node:18-alpine
-2025-11-23T10:19:01.507539434Z #2 DONE 1.4s
-2025-11-23T10:19:01.638269846Z 
-2025-11-23T10:19:01.638294728Z #4 [internal] load .dockerignore
-2025-11-23T10:19:01.638298659Z #4 transferring context:
-2025-11-23T10:19:01.859246111Z #4 transferring context: 2B done
-2025-11-23T10:19:01.859265833Z #4 DONE 0.2s
-2025-11-23T10:19:01.859268573Z 
-2025-11-23T10:19:01.859271144Z #5 [internal] load build context
-2025-11-23T10:19:01.859273464Z #5 DONE 0.0s
-2025-11-23T10:19:01.859275494Z 
-2025-11-23T10:19:01.859278744Z #6 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:19:01.859281364Z #6 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:19:02.044439337Z #6 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.3s done
-2025-11-23T10:19:05.990535145Z #6 ...
-2025-11-23T10:19:05.990548046Z 
-2025-11-23T10:19:05.990552066Z #5 [internal] load build context
-2025-11-23T10:19:05.990555627Z #5 transferring context: 2.45MB 0.1s done
-2025-11-23T10:19:05.990558607Z #5 DONE 3.9s
-2025-11-23T10:19:06.102944094Z 
-2025-11-23T10:19:06.102963825Z #6 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:19:06.102970186Z #6 DONE 4.4s
-2025-11-23T10:19:06.263762317Z 
-2025-11-23T10:19:06.263788369Z #7 [2/9] RUN npm install -g pnpm
-2025-11-23T10:19:06.26379489Z #7 CACHED
-2025-11-23T10:19:06.26379922Z 
-2025-11-23T10:19:06.263804471Z #8 [3/9] WORKDIR /app
-2025-11-23T10:19:06.263809151Z #8 CACHED
-2025-11-23T10:19:06.263813321Z 
-2025-11-23T10:19:06.263818102Z #9 [4/9] COPY package.json pnpm-lock.yaml ./
-2025-11-23T10:19:06.263823113Z #9 ERROR: failed to calculate checksum of ref ulgy9ulzhd9f0rew5g63xgx8x::jo2hj9q0sifq8d58hfslbsc4t: "/pnpm-lock.yaml": not found
-2025-11-23T10:19:07.275397232Z ------
-2025-11-23T10:19:07.275415734Z  > [4/9] COPY package.json pnpm-lock.yaml ./:
-2025-11-23T10:19:07.275421264Z ------
-2025-11-23T10:19:07.276052611Z Dockerfile:9
-2025-11-23T10:19:07.276078303Z --------------------
-2025-11-23T10:19:07.276084994Z    7 |     
-2025-11-23T10:19:07.276092824Z    8 |     # Copia i file
-2025-11-23T10:19:07.276096915Z    9 | >>> COPY package.json pnpm-lock.yaml ./
-2025-11-23T10:19:07.276100625Z   10 |     COPY public ./public
-2025-11-23T10:19:07.276104625Z   11 |     COPY src ./src
-2025-11-23T10:19:07.276108116Z --------------------
-2025-11-23T10:19:07.276204994Z error: failed to solve: failed to compute cache key: failed to calculate checksum of ref ulgy9ulzhd9f0rew5g63xgx8x::jo2hj9q0sifq8d58hfslbsc4t: "/pnpm-lock.yaml": not found
+2025-11-23T10:29:25.354097356Z ==> Cloning from https://github.com/paolo12348888/alladin-trader
+2025-11-23T10:29:26.014824315Z ==> Checking out commit b845b630b723acdd71a9f0c1b31ca314da26a0bc in branch main
+2025-11-23T10:29:35.59360223Z #1 [internal] load build definition from Dockerfile
+2025-11-23T10:29:36.321851987Z #1 transferring dockerfile:
+2025-11-23T10:29:36.493697516Z #1 transferring dockerfile: 489B 0.0s done
+2025-11-23T10:29:36.493715176Z #1 DONE 0.9s
+2025-11-23T10:29:36.701969469Z 
+2025-11-23T10:29:36.70198361Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-23T10:29:36.885556492Z #2 ...
+2025-11-23T10:29:36.885573432Z 
+2025-11-23T10:29:36.885579213Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+2025-11-23T10:29:36.885585683Z #3 DONE 0.0s
+2025-11-23T10:29:37.035903291Z 
+2025-11-23T10:29:37.035924791Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-23T10:29:37.161403974Z #2 DONE 0.6s
+2025-11-23T10:29:37.298209778Z 
+2025-11-23T10:29:37.298232679Z #4 [internal] load .dockerignore
+2025-11-23T10:29:37.298238399Z #4 transferring context: 2B done
+2025-11-23T10:29:37.298242759Z #4 DONE 0.0s
+2025-11-23T10:29:37.298246869Z 
+2025-11-23T10:29:37.298253479Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T10:29:37.298258279Z #5 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2025-11-23T10:29:37.453569319Z #5 ...
+2025-11-23T10:29:37.45359041Z 
+2025-11-23T10:29:37.45359469Z #6 [internal] load build context
+2025-11-23T10:29:37.45359844Z #6 transferring context: 2.47MB 0.1s done
+2025-11-23T10:29:37.45360133Z #6 DONE 0.2s
+2025-11-23T10:29:37.45360403Z 
+2025-11-23T10:29:37.4536077Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T10:29:38.55317762Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+2025-11-23T10:29:39.093399828Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.6s done
+2025-11-23T10:29:39.093417799Z #5 DONE 1.9s
+2025-11-23T10:29:39.243727707Z 
+2025-11-23T10:29:39.243750397Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T10:29:39.243755407Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+2025-11-23T10:29:44.097467616Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 5.0s done
+2025-11-23T10:29:44.097508547Z #5 DONE 6.9s
+2025-11-23T10:29:44.247872257Z 
+2025-11-23T10:29:44.252126048Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T10:29:44.252133728Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+2025-11-23T10:29:46.588545875Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 2.5s done
+2025-11-23T10:29:46.588565195Z #5 DONE 9.4s
+2025-11-23T10:29:46.703256342Z 
+2025-11-23T10:29:46.703284503Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T10:29:46.703291033Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0.1s done
+2025-11-23T10:29:46.703295643Z #5 DONE 9.5s
+2025-11-23T10:29:46.856679078Z 
+2025-11-23T10:29:46.856701839Z #7 [2/7] RUN npm install -g pnpm@latest
+2025-11-23T10:29:48.911296215Z #7 2.205 
+2025-11-23T10:29:48.911317185Z #7 2.205 added 1 package in 2s
+2025-11-23T10:29:49.066340267Z #7 2.205 
+2025-11-23T10:29:49.171611216Z #7 2.205 1 package is looking for funding
+2025-11-23T10:29:49.171649977Z #7 2.205   run `npm fund` for details
+2025-11-23T10:29:49.171656357Z #7 2.209 npm notice
+2025-11-23T10:29:49.171660347Z #7 2.209 npm notice New major version of npm available! 10.8.2 -> 11.6.3
+2025-11-23T10:29:49.171663477Z #7 2.209 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
+2025-11-23T10:29:49.171667017Z #7 2.209 npm notice To update run: npm install -g npm@11.6.3
+2025-11-23T10:29:49.171671287Z #7 2.209 npm notice
+2025-11-23T10:29:50.133290471Z #7 DONE 3.4s
+2025-11-23T10:29:50.286414928Z 
+2025-11-23T10:29:50.286443149Z #8 [3/7] WORKDIR /app
+2025-11-23T10:29:55.178401196Z #8 DONE 5.0s
+2025-11-23T10:29:55.398188967Z 
+2025-11-23T10:29:55.398220968Z #9 [4/7] COPY package.json pnpm-lock.yaml* ./
+2025-11-23T10:30:14.092683016Z #9 DONE 18.8s
+2025-11-23T10:30:14.245570407Z 
+2025-11-23T10:30:14.245589357Z #10 [5/7] RUN pnpm install --frozen-lockfile
+2025-11-23T10:30:14.97896787Z #10 0.884  ERR_PNPM_NO_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is absent
+2025-11-23T10:30:14.978997642Z #10 0.884 
+2025-11-23T10:30:14.979061033Z #10 0.884 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2025-11-23T10:30:15.111575846Z #10 ERROR: process "/bin/sh -c pnpm install --frozen-lockfile" did not complete successfully: exit code: 1
+2025-11-23T10:30:15.14555584Z ------
+2025-11-23T10:30:15.145576951Z  > [5/7] RUN pnpm install --frozen-lockfile:
+2025-11-23T10:30:15.145583141Z 0.884  ERR_PNPM_NO_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is absent
+2025-11-23T10:30:15.145605512Z 0.884 
+2025-11-23T10:30:15.145611142Z 0.884 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2025-11-23T10:30:15.145615782Z ------
+2025-11-23T10:30:15.14729906Z Dockerfile:13
+2025-11-23T10:30:15.147316121Z --------------------
+2025-11-23T10:30:15.147321291Z   11 |     
+2025-11-23T10:30:15.147325981Z   12 |     # Installa le dipendenze usando pnpm
+2025-11-23T10:30:15.147330261Z   13 | >>> RUN pnpm install --frozen-lockfile
+2025-11-23T10:30:15.147335011Z   14 |     
+2025-11-23T10:30:15.147391683Z   15 |     # Copia il resto dei file del progetto
+2025-11-23T10:30:15.147400013Z --------------------
+2025-11-23T10:30:15.147405683Z error: failed to solve: process "/bin/sh -c pnpm install --frozen-lockfile" did not complete successfully: exit code: 1
+2025-11-23T10:30:15.167117473Z error: exit status 1
