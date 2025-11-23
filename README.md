@@ -258,6 +258,22 @@ npm run build
 netlify deploy --prod --dir=dist
 ```
 
+#### Render (Raccomandato per Frontend)
+```
+# Configurazione Render Static Site:
+# - Tipo: Static Site
+# - Root Directory: alladin-trader-fixed
+# - Build Command: pnpm install && pnpm run build
+# - Publish Directory: dist
+
+# Variabili d'Ambiente Render:
+VITE_OPENAI_MODE=demo
+VITE_XTB_MODE=demo
+VITE_APP_VERSION=1.0.0
+
+# Deploy automatico dal repository GitHub
+```
+
 #### Railway
 ```bash
 # Connessione repository Railway
