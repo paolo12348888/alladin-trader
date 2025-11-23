@@ -172,7 +172,7 @@ const Settings: React.FC = () => {
   const [isTestingOpenAI, setIsTestingOpenAI] = useState(false);
   const [openAIStatus, setOpenAIStatus] = useState<'unknown' | 'success' | 'error'>('unknown');
   const [openAITestResult, setOpenAITestResult] = useState<any>(null);
-  const [isOpenAIConfigured, setIsOpenAIConfigured] = useState(false);
+  const [openAIConfigured, setOpenAIConfigured] = useState(false);
 
   // Load settings on component mount
   useEffect(() => {
@@ -250,7 +250,7 @@ const Settings: React.FC = () => {
   // OpenAI Configuration Functions
   const loadOpenAISettings = () => {
     const config = getOpenAIConfig();
-    setIsOpenAIConfigured(isOpenAIConfigured());
+    setOpenAIConfigured(isOpenAIConfigured());
     
     setOpenAIConfig(prev => ({
       ...prev,
@@ -478,9 +478,9 @@ const Settings: React.FC = () => {
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-center space-x-2 p-3 border rounded">
-                    <div className={`w-3 h-3 rounded-full ${isOpenAIConfigured ? 'bg-green-500' : 'bg-red-500'}`} />
+                    <div className={`w-3 h-3 rounded-full ${openAIConfigured ? 'bg-green-500' : 'bg-red-500'}`} />
                     <span className="text-sm">
-                      {isOpenAIConfigured ? 'API Key Configurata' : 'API Key Mancante'}
+                      {openAIConfigured ? 'API Key Configurata' : 'API Key Mancante'}
                     </span>
                   </div>
                   <div className="flex items-center space-x-2 p-3 border rounded">

@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 import { CapitalManager, CapitalSettings, CapitalAllocation } from '@/services/CapitalManager';
 import { XTBApiService } from '@/services/xtbApi';
-import { XTBDemoService } from '@/services/XTBDemoService';
+// import { XTBDemoService } from '@/services/XTBDemoService';
 
 interface BudgetConfigProps {
   onSettingsChange?: (settings: CapitalSettings) => void;
@@ -128,7 +128,7 @@ export const BudgetConfig: React.FC<BudgetConfigProps> = ({ onSettingsChange }) 
       
       // Fallback alla modalità demo
       try {
-        const demoService = new XTBDemoService();
+        const demoService = new XTBApiService();
         const demoManager = new CapitalManager(demoService);
         await demoManager.initializeCapital(settings);
         

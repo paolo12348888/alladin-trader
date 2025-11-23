@@ -101,6 +101,16 @@ export interface StatisticalArbitrageConfig {
 
 interface StatisticalArbitrageAlgoProps {
   className?: string;
+  correlation_lookback?: number;
+  min_correlation_threshold?: number;
+  cointegration_p_value?: number;
+  max_half_life?: number;
+  entry_z_score?: number;
+  exit_z_score?: number;
+  position_size?: number;
+  max_positions?: number;
+  stop_loss?: number;
+  take_profit?: number;
 }
 
 const defaultConfig: StatisticalArbitrageConfig = {
@@ -118,7 +128,7 @@ const defaultConfig: StatisticalArbitrageConfig = {
 
 export function StatisticalArbitrageAlgo({ className }: StatisticalArbitrageAlgoProps) {
   const [isRunning, setIsRunning] = useState(false);
-  const [config, setConfig] = useState<StatisticalArbitrageAlgoProps>(defaultConfig);
+  const [config, setConfig] = useState<StatisticalArbitrageConfig>(defaultConfig);
   const [correlationData, setCorrelationData] = useState<CorrelationData | null>(null);
   const [cointegrationData, setCointegrationData] = useState<CointegrationData | null>(null);
   const [spreadAnalysis, setSpreadAnalysis] = useState<SpreadAnalysis | null>(null);

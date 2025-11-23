@@ -36,6 +36,8 @@ export interface MomentumParams {
   macd_fast?: number;
   macd_slow?: number;
   macd_signal?: number;
+  stop_loss_pct?: number; // Stop loss percentuale
+  take_profit_pct?: number; // Take profit percentuale
 }
 
 export interface MeanReversionParams {

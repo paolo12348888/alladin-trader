@@ -52,6 +52,7 @@ interface ChartData {
   loading: boolean;
   error: string | null;
   lastUpdate: Date | null;
+  isStreaming: boolean;
 }
 
 interface UseRealTimeChartOptions {
@@ -88,6 +89,7 @@ export function useRealTimeChart({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
+  const [isStreaming, setIsStreaming] = useState<boolean>(false);
 
   const wsRef = useRef<WebSocket | null>(null);
   const subscribed = useRef<boolean>(false);
@@ -173,6 +175,7 @@ export function useRealTimeChart({
 
         ws.onopen = () => {
           console.log(`🔌 WebSocket connesso per ${symbol}`);
+          setIsStreaming(true);
 
           // Sottoscrivi al simbolo per aggiornamenti real-time
           if (ws && ws.readyState === WebSocket.OPEN && !subscribed.current) {
@@ -216,6 +219,7 @@ export function useRealTimeChart({
 
         ws.onclose = () => {
           console.log('ℹ️ WebSocket disconnesso - Modalità demo attiva');
+          setIsStreaming(false);
           subscribed.current = false;
           wsRef.current = null;
 
@@ -263,6 +267,7 @@ export function useRealTimeChart({
     loading,
     error,
     lastUpdate,
+    isStreaming,
   };
 }
 

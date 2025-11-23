@@ -38,7 +38,6 @@ import {
   ArrowUpDown,
   Clock,
   Brain,
-  Scatter3D,
   Radar
 } from 'lucide-react';
 

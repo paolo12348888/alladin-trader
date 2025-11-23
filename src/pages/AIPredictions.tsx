@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { TrendingUp, TrendingDown, Brain, Target, AlertCircle, Clock, Check, Zap, MessageSquare } from "lucide-react";
+import { TrendingUp, TrendingDown, Brain, Target, AlertCircle, Clock, Check, Zap, MessageSquare, Loader2 } from "lucide-react";
 import Chatbot from "@/components/Chatbot";
 import { toast } from "sonner";
 import {

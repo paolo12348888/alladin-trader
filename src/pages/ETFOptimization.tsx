@@ -630,7 +630,7 @@ export default function ETFOptimization() {
                                             <p className="font-semibold">{label} Factor</p>
                                             {payload.map((entry, index) => (
                                               <p key={index} className="text-sm" style={{ color: entry.color }}>
-                                                {entry.dataKey}: {(entry.value * 100).toFixed(1)}%
+                                                {entry.dataKey}: {((Number(entry.value) || 0) * 100).toFixed(1)}%
                                               </p>
                                             ))}
                                           </div>
@@ -689,7 +689,7 @@ export default function ETFOptimization() {
                                   <p className="font-semibold">{label}</p>
                                   {payload.map((entry, index) => (
                                     <p key={index} className="text-sm" style={{ color: entry.color }}>
-                                      {entry.dataKey}: {(entry.value * 100).toFixed(1)}%
+                                      {entry.dataKey}: {((Number(entry.value) || 0) * 100).toFixed(1)}%
                                     </p>
                                   ))}
                                 </div>
@@ -929,7 +929,7 @@ export default function ETFOptimization() {
                                   <p className="font-semibold">{label}</p>
                                   {payload.map((entry, index) => (
                                     <p key={index} className="text-sm">
-                                      {entry.dataKey}: {entry.value?.toFixed(3) || entry.value}
+                                      {entry.dataKey}: {(Number(entry.value) || 0).toFixed(3)}
                                     </p>
                                   ))}
                                 </div>
@@ -1044,7 +1044,7 @@ export default function ETFOptimization() {
                           </div>
                           <div className="text-right">
                             <p className="text-lg font-bold">
-                              {suggestion.difference > 0 ? '+' : ''}{suggestion.difference.toFixed(1)}%
+                              {(Number(suggestion.difference) || 0) > 0 ? '+' : ''}{(Number(suggestion.difference) || 0).toFixed(1)}%
                             </p>
                             <p className="text-sm text-muted-foreground">
                               {suggestion.current.toFixed(1)}% → {suggestion.target.toFixed(1)}%

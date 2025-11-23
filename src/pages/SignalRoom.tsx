@@ -26,6 +26,7 @@ interface Signal {
   profitLoss?: number;
   aiModel: string;
   description: string;
+  isStreaming?: boolean;
 }
 
 // XTB Symbol mapping

@@ -436,7 +436,7 @@ export default function QuantitativeAlpha() {
                                   <p className="font-semibold">Day {label}</p>
                                   {payload.map((entry, index) => (
                                     <p key={index} className="text-sm" style={{ color: entry.color }}>
-                                      {entry.dataKey}: {entry.value?.toFixed(1)}
+                                      {entry.dataKey}: {(Number(entry.value) || 0).toFixed(1)}
                                     </p>
                                   ))}
                                 </div>
@@ -612,8 +612,13 @@ export default function QuantitativeAlpha() {
                       <div className="flex justify-between">
                         <span className="text-sm">Avg Confidence:</span>
                         <span className="font-medium">
-                          {(mlSignals.filter(s => s.model === 'RandomForest').reduce((sum, s) => sum + s.confidence, 0) / 
-                            mlSignals.filter(s => s.model === 'RandomForest').length * 100).toFixed(1)}%
+                          {(() => {
+                            const randomForestSignals = mlSignals.filter(s => s.model === 'RandomForest');
+                            const avgConfidence = randomForestSignals.length > 0 
+                              ? randomForestSignals.reduce((sum, s) => sum + s.confidence, 0) / randomForestSignals.length * 100 
+                              : 0;
+                            return `${avgConfidence.toFixed(1)}%`;
+                          })()}
                         </span>
                       </div>
                       <div className="flex justify-between">
@@ -639,8 +644,13 @@ export default function QuantitativeAlpha() {
                       <div className="flex justify-between">
                         <span className="text-sm">Avg Confidence:</span>
                         <span className="font-medium">
-                          {(mlSignals.filter(s => s.model === 'NeuralNetwork').reduce((sum, s) => sum + s.confidence, 0) / 
-                            mlSignals.filter(s => s.model === 'NeuralNetwork').length * 100).toFixed(1)}%
+                          {(() => {
+                            const neuralNetworkSignals = mlSignals.filter(s => s.model === 'NeuralNetwork');
+                            const avgConfidence = neuralNetworkSignals.length > 0 
+                              ? neuralNetworkSignals.reduce((sum, s) => sum + s.confidence, 0) / neuralNetworkSignals.length * 100 
+                              : 0;
+                            return `${avgConfidence.toFixed(1)}%`;
+                          })()}
                         </span>
                       </div>
                       <div className="flex justify-between">
@@ -666,8 +676,13 @@ export default function QuantitativeAlpha() {
                       <div className="flex justify-between">
                         <span className="text-sm">Avg Confidence:</span>
                         <span className="font-medium">
-                          {(mlSignals.filter(s => s.model === 'SVM').reduce((sum, s) => sum + s.confidence, 0) / 
-                            mlSignals.filter(s => s.model === 'SVM').length * 100).toFixed(1)}%
+                          {(() => {
+                            const svmSignals = mlSignals.filter(s => s.model === 'SVM');
+                            const avgConfidence = svmSignals.length > 0 
+                              ? svmSignals.reduce((sum, s) => sum + s.confidence, 0) / svmSignals.length * 100 
+                              : 0;
+                            return `${avgConfidence.toFixed(1)}%`;
+                          })()}
                         </span>
                       </div>
                       <div className="flex justify-between">
@@ -835,7 +850,7 @@ export default function QuantitativeAlpha() {
                             </div>
                             <div>
                               <span className="text-muted-foreground">Retail Foot Traffic:</span>
-                              <span className="ml-1 font-medium">{data.satelliteData.retailFootTraffic.toFixed(1)}</span>
+                              <span className="ml-1 font-medium">{(Number(data.satelliteData.retailFootTraffic) || 0).toFixed(1)}</span>
                             </div>
                           </div>
                         </div>
@@ -880,7 +895,7 @@ export default function QuantitativeAlpha() {
                                   <p className="font-semibold">{label}</p>
                                   {payload.map((entry, index) => (
                                     <p key={index} className="text-sm" style={{ color: entry.color }}>
-                                      {entry.dataKey}: {entry.value?.toFixed(2)}%
+                                      {entry.dataKey}: {(Number(entry.value) || 0).toFixed(2)}%
                                     </p>
                                   ))}
                                 </div>
@@ -1041,7 +1056,7 @@ export default function QuantitativeAlpha() {
                               <Cell key={`cell-${index}`} fill={['#8b5cf6', '#06b6d4', '#10b981'][index]} />
                             ))}
                           </Pie>
-                          <Tooltip formatter={(value) => [`${(value * 100).toFixed(1)}%`, 'Weight']} />
+                          <Tooltip formatter={(value) => [`${((Number(value) || 0) * 100).toFixed(1)}%`, 'Weight']} />
                         </RechartsPieChart>
                       </ResponsiveContainer>
                     </div>

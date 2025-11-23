@@ -6,7 +6,7 @@ export class RealTimeFinancialService {
   private static readonly CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
   
   // ETF Symbols per dati reali
-  private static readonly REAL_ETF_SYMBOLS = [
+  public static readonly REAL_ETF_SYMBOLS = [
     'SPY', 'QQQ', 'VTI', 'IWM', 'VEA', 'VWO', 'BND', 'LQD', 'HYG', 
     'XLK', 'XLF', 'XLE', 'VTV', 'VUG', 'QUAL', 'USMV', 'VNQ', 'GLD', 'SLV'
   ];
@@ -134,7 +134,7 @@ export class RealTimeFinancialService {
     return returns[symbol] || { price: 100, ytdReturn: 5.0, aum: 10, expense: 0.5 };
   }
 
-  private static getVolatilityForSymbol(symbol: string): number {
+  public static getVolatilityForSymbol(symbol: string): number {
     const volatilities: { [key: string]: number } = {
       'SPY': 16.2, 'QQQ': 22.4, 'VTI': 15.8, 'IWM': 20.1, 'VTV': 17.3,
       'VUG': 18.9, 'QUAL': 16.8, 'USMV': 12.4, 'XLK': 24.7, 'VEA': 17.4,
@@ -319,7 +319,7 @@ export class RealTimeFinancialService {
     };
   }
 
-  private static calculateRiskParity(returns: number[]): any {
+  private static calculateRiskParity(returns: number[][]): any {
     // Risk contribution equalization
     const volatilities = returns.map(asset => this.calculateHistoricalVolatility(asset));
     const totalVol = volatilities.reduce((sum, v) => sum + v, 0);

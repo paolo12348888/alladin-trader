@@ -33,7 +33,7 @@ import type { AlgoStatus, TradingSignal, ExecutionOrder, Portfolio, RiskMetrics 
 import { BudgetConfig } from "@/components/BudgetConfig";
 import type { CapitalSettings, CapitalManager } from "@/services/CapitalManager";
 import { CapitalManager as CapitalManagerClass } from "@/services/CapitalManager";
-import { XTBDemoService } from "@/services/XTBDemoService";
+import { XTBApiService } from "@/services/xtbApi";
 
 export default function HedgeFundAlgo() {
   const [algoStatuses, setAlgoStatuses] = useState<AlgoStatus[]>([]);
@@ -56,7 +56,7 @@ export default function HedgeFundAlgo() {
     
     try {
       // Inizializza CapitalManager con modalità demo automatica
-      const demoService = new XTBDemoService();
+      const demoService = new XTBApiService();
       const manager = new CapitalManagerClass(demoService);
       setCapitalManager(manager);
 

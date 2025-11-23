@@ -5,6 +5,9 @@ export interface UseTranslationReturn {
   i18n: any;
   changeLanguage: (lng: string) => Promise<any>;
   language: string;
+  getLanguageName: (langCode?: string) => string;
+  exists: (key: string) => boolean;
+  getSupportedLanguages: () => { code: string; name: string; flag: string; }[];
 }
 
 /**

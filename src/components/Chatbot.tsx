@@ -60,20 +60,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ ticker, isLive }) => {
       content: `You are an expert AI trading assistant specialized in financial market analysis, technical indicators, and trading strategies. You have knowledge of LSTM, XGBoost, and LightGBM models for predictions. Currently analyzing: ${ticker}. Provide clear, actionable insights and maintain a professional yet friendly tone.`
     }
   ]);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
   // Verifica se OpenAI è configurato
   const isConfigured = isOpenAIConfigured();
-
-  // Scrolla automaticamente verso il basso quando arrivano nuovi messaggi
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, [messages]);
 
   // Funzione per inviare messaggi usando OpenAI reale
   const handleSendMessage = async () => {
@@ -167,7 +155,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ ticker, isLive }) => {
       </CardHeader>
       
       <CardContent className="flex-1 p-4 overflow-hidden">
-        <ScrollArea className="h-full pr-4" viewportRef={scrollRef}>
+        <ScrollArea className="h-full pr-4">
           <div className="space-y-4">
             {messages.map((message) => (
               <ChatMessage key={message.id} message={message} />

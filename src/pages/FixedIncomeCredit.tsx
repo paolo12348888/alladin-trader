@@ -130,7 +130,9 @@ function BondTable({ data, type }: BondTableProps) {
             <tr key={bond.id} className="border-b hover:bg-accent/30">
               <td className="p-2">
                 <div className="font-medium">{bond.name}</div>
-                <div className="text-xs text-muted-foreground">{bond.ticker || bond.issuer}</div>
+                <div className="text-xs text-muted-foreground">
+                  {'ticker' in bond ? bond.ticker : bond.issuer || ''}
+                </div>
               </td>
               {type === 'corporate' && <td className="p-2">{(bond as CorporateBond).issuer}</td>}
               <td className="p-2 text-right font-mono">{bond.yield.toFixed(2)}%</td>

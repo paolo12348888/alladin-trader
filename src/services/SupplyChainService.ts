@@ -538,7 +538,7 @@ export class SupplyChainService {
         targetPrice: 612.50,
         stopLoss: 575.00,
         expectedReturn: 4.30,
-        timeframe: '5D',
+        timeframe: '7D',
         reasons: [
           'Ukraine port activity at 45%, historical low',
           'Kansas grain elevators at 76% capacity',

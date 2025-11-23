@@ -2,8 +2,8 @@
 // Machine Learning implementation for quantitative trading
 
 import * as tf from '@tensorflow/tfjs';
-import { SimpleNeuralNetwork } from 'brain.js';
-import { SimpleLinearRegression, MultipleLinearRegression } from 'ml-regression';
+import * as brain from 'brain.js';
+import { SimpleLinearRegression, MultipleLinearRegression, PolynomialRegression } from 'ml-regression';
 import * as turf from '@turf/turf';
 import RealTimeFinancialService from './RealTimeFinancialService';
 
@@ -49,6 +49,7 @@ export interface AlternativeData {
     industrialActivity: number;
     shippingTraffic: number;
     agriculturalProduction: number;
+    retailFootTraffic: number;
   };
   macroeconomicData: {
     realGDP: number;
@@ -71,6 +72,88 @@ export interface ModelPerformance {
   sortinoRatio: number;
   jensenAlpha: number;
   treynorRatio: number;
+}
+
+export interface BacktestResult {
+  returns: number[];
+  cumulativeReturn: number;
+  winRate: number;
+  sharpeRatio: number;
+  maxDrawdown: number;
+  trades: Array<{
+    entryDate: string;
+    exitDate: string;
+    symbol: string;
+    action: 'BUY' | 'SELL';
+    entryPrice: number;
+    exitPrice: number;
+    pnl: number;
+  }>;
+  monthlyReturns: { [month: string]: number };
+  drawdownPeriods: Array<{
+    start: string;
+    end: string;
+    maxDrawdown: number;
+  }>;
+}
+
+export interface WalkForwardAnalysis {
+  outOfSampleReturn: number;
+  outOfSampleSharpe: number;
+  inSampleReturn: number;
+  inSampleSharpe: number;
+  decayRate: number;
+  stability: number;
+  periods: Array<{
+    period: string;
+    inSampleReturn: number;
+    outOfSampleReturn: number;
+    inSampleSharpe: number;
+    outOfSampleSharpe: number;
+  }>;
+}
+
+export interface EnsembleModel {
+  type: 'stacking' | 'voting' | 'bagging';
+  models: string[];
+  weights: number[];
+  performance: ModelPerformance;
+  lastTrained: string;
+  prediction: {
+    action: 'BUY' | 'SELL' | 'HOLD';
+    confidence: number;
+    probability: number;
+    modelContributions: { [model: string]: number };
+  };
+}
+
+export interface PortfolioOptimization {
+  optimalAllocation: { [symbol: string]: number };
+  expectedReturn: number;
+  expectedVolatility: number;
+  sharpeRatio: number;
+  constraintViolation: string[];
+  riskMetrics: RiskMetrics;
+  efficientFrontier: Array<{
+    return: number;
+    volatility: number;
+    sharpe: number;
+    weights: { [symbol: string]: number };
+  }>;
+}
+
+export interface StockUniverse {
+  symbols: string[];
+  sectors: { [symbol: string]: string };
+  marketCaps: { [symbol: string]: number };
+  liquidity: { [symbol: string]: number };
+  screeningCriteria: {
+    minMarketCap?: number;
+    maxMarketCap?: number;
+    minLiquidity?: number;
+    excludedSectors?: string[];
+    requiredExchanges?: string[];
+  };
 }
 
 export interface RiskMetrics {
@@ -110,8 +193,8 @@ export interface MLFeatures {
 }
 
 class QuantitativeAlphaService {
-  private static cache = new Map<string, { data: any; timestamp: number }>();
-  private static cacheExpiry = 5 * 60 * 1000; // 5 minutes
+  public static cache = new Map<string, { data: any; timestamp: number }>();
+  public static cacheExpiry = 5 * 60 * 1000; // 5 minutes
   private financialService: RealTimeFinancialService;
 
   private readonly QUANTITATIVE_FACTORS = [
@@ -867,20 +950,38 @@ class QuantitativeAlphaService {
     };
   }
 
+  public getRealTimeData(symbol: string): Promise<any> {
+    const cacheKey = `realtime_${symbol}`;
+    const cached = this.getFromCache(cacheKey);
+    if (cached) return Promise.resolve(cached);
+
+    return this.financialService.getRealTimeData(symbol).then(data => {
+      this.setCache(cacheKey, data);
+      return data;
+    });
+  }
+
   private getFromCache(key: string): any {
-    const cached = this.cache.get(key);
-    if (cached && Date.now() - cached.timestamp < this.cacheExpiry) {
+    const cached = QuantitativeAlphaService.cache.get(key);
+    if (cached && Date.now() - cached.timestamp < QuantitativeAlphaService.cacheExpiry) {
       return cached.data;
     }
     return null;
   }
 
   private setCache(key: string, data: any): void {
-    this.cache.set(key, {
+    QuantitativeAlphaService.cache.set(key, {
       data,
       timestamp: Date.now()
     });
   }
 }
 
+// Create singleton instance
+const quantitativeAlphaService = new QuantitativeAlphaService(
+  new (require('./RealTimeFinancialService').default)()
+);
+
+// Export all interfaces and service
+export { quantitativeAlphaService };
 export default QuantitativeAlphaService;
