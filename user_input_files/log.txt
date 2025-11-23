@@ -1,87 +1,100 @@
-2025-11-23T10:29:25.354097356Z ==> Cloning from https://github.com/paolo12348888/alladin-trader
-2025-11-23T10:29:26.014824315Z ==> Checking out commit b845b630b723acdd71a9f0c1b31ca314da26a0bc in branch main
-2025-11-23T10:29:35.59360223Z #1 [internal] load build definition from Dockerfile
-2025-11-23T10:29:36.321851987Z #1 transferring dockerfile:
-2025-11-23T10:29:36.493697516Z #1 transferring dockerfile: 489B 0.0s done
-2025-11-23T10:29:36.493715176Z #1 DONE 0.9s
-2025-11-23T10:29:36.701969469Z 
-2025-11-23T10:29:36.70198361Z #2 [internal] load metadata for docker.io/library/node:18-alpine
-2025-11-23T10:29:36.885556492Z #2 ...
-2025-11-23T10:29:36.885573432Z 
-2025-11-23T10:29:36.885579213Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
-2025-11-23T10:29:36.885585683Z #3 DONE 0.0s
-2025-11-23T10:29:37.035903291Z 
-2025-11-23T10:29:37.035924791Z #2 [internal] load metadata for docker.io/library/node:18-alpine
-2025-11-23T10:29:37.161403974Z #2 DONE 0.6s
-2025-11-23T10:29:37.298209778Z 
-2025-11-23T10:29:37.298232679Z #4 [internal] load .dockerignore
-2025-11-23T10:29:37.298238399Z #4 transferring context: 2B done
-2025-11-23T10:29:37.298242759Z #4 DONE 0.0s
-2025-11-23T10:29:37.298246869Z 
-2025-11-23T10:29:37.298253479Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:29:37.298258279Z #5 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
-2025-11-23T10:29:37.453569319Z #5 ...
-2025-11-23T10:29:37.45359041Z 
-2025-11-23T10:29:37.45359469Z #6 [internal] load build context
-2025-11-23T10:29:37.45359844Z #6 transferring context: 2.47MB 0.1s done
-2025-11-23T10:29:37.45360133Z #6 DONE 0.2s
-2025-11-23T10:29:37.45360403Z 
-2025-11-23T10:29:37.4536077Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:29:38.55317762Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
-2025-11-23T10:29:39.093399828Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.6s done
-2025-11-23T10:29:39.093417799Z #5 DONE 1.9s
-2025-11-23T10:29:39.243727707Z 
-2025-11-23T10:29:39.243750397Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:29:39.243755407Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
-2025-11-23T10:29:44.097467616Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 5.0s done
-2025-11-23T10:29:44.097508547Z #5 DONE 6.9s
-2025-11-23T10:29:44.247872257Z 
-2025-11-23T10:29:44.252126048Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:29:44.252133728Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
-2025-11-23T10:29:46.588545875Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 2.5s done
-2025-11-23T10:29:46.588565195Z #5 DONE 9.4s
-2025-11-23T10:29:46.703256342Z 
-2025-11-23T10:29:46.703284503Z #5 [1/7] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
-2025-11-23T10:29:46.703291033Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0.1s done
-2025-11-23T10:29:46.703295643Z #5 DONE 9.5s
-2025-11-23T10:29:46.856679078Z 
-2025-11-23T10:29:46.856701839Z #7 [2/7] RUN npm install -g pnpm@latest
-2025-11-23T10:29:48.911296215Z #7 2.205 
-2025-11-23T10:29:48.911317185Z #7 2.205 added 1 package in 2s
-2025-11-23T10:29:49.066340267Z #7 2.205 
-2025-11-23T10:29:49.171611216Z #7 2.205 1 package is looking for funding
-2025-11-23T10:29:49.171649977Z #7 2.205   run `npm fund` for details
-2025-11-23T10:29:49.171656357Z #7 2.209 npm notice
-2025-11-23T10:29:49.171660347Z #7 2.209 npm notice New major version of npm available! 10.8.2 -> 11.6.3
-2025-11-23T10:29:49.171663477Z #7 2.209 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
-2025-11-23T10:29:49.171667017Z #7 2.209 npm notice To update run: npm install -g npm@11.6.3
-2025-11-23T10:29:49.171671287Z #7 2.209 npm notice
-2025-11-23T10:29:50.133290471Z #7 DONE 3.4s
-2025-11-23T10:29:50.286414928Z 
-2025-11-23T10:29:50.286443149Z #8 [3/7] WORKDIR /app
-2025-11-23T10:29:55.178401196Z #8 DONE 5.0s
-2025-11-23T10:29:55.398188967Z 
-2025-11-23T10:29:55.398220968Z #9 [4/7] COPY package.json pnpm-lock.yaml* ./
-2025-11-23T10:30:14.092683016Z #9 DONE 18.8s
-2025-11-23T10:30:14.245570407Z 
-2025-11-23T10:30:14.245589357Z #10 [5/7] RUN pnpm install --frozen-lockfile
-2025-11-23T10:30:14.97896787Z #10 0.884  ERR_PNPM_NO_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is absent
-2025-11-23T10:30:14.978997642Z #10 0.884 
-2025-11-23T10:30:14.979061033Z #10 0.884 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
-2025-11-23T10:30:15.111575846Z #10 ERROR: process "/bin/sh -c pnpm install --frozen-lockfile" did not complete successfully: exit code: 1
-2025-11-23T10:30:15.14555584Z ------
-2025-11-23T10:30:15.145576951Z  > [5/7] RUN pnpm install --frozen-lockfile:
-2025-11-23T10:30:15.145583141Z 0.884  ERR_PNPM_NO_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is absent
-2025-11-23T10:30:15.145605512Z 0.884 
-2025-11-23T10:30:15.145611142Z 0.884 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
-2025-11-23T10:30:15.145615782Z ------
-2025-11-23T10:30:15.14729906Z Dockerfile:13
-2025-11-23T10:30:15.147316121Z --------------------
-2025-11-23T10:30:15.147321291Z   11 |     
-2025-11-23T10:30:15.147325981Z   12 |     # Installa le dipendenze usando pnpm
-2025-11-23T10:30:15.147330261Z   13 | >>> RUN pnpm install --frozen-lockfile
-2025-11-23T10:30:15.147335011Z   14 |     
-2025-11-23T10:30:15.147391683Z   15 |     # Copia il resto dei file del progetto
-2025-11-23T10:30:15.147400013Z --------------------
-2025-11-23T10:30:15.147405683Z error: failed to solve: process "/bin/sh -c pnpm install --frozen-lockfile" did not complete successfully: exit code: 1
-2025-11-23T10:30:15.167117473Z error: exit status 1
+2025-11-23T10:38:51.742316497Z #12 1.217 > react_repo@0.0.0 build:prod /app
+2025-11-23T10:38:51.742321977Z #12 1.217 > pnpm install --prefer-offline && rm -rf node_modules/.vite-temp && tsc -b && BUILD_MODE=prod vite build
+2025-11-23T10:38:51.742326677Z #12 1.217 
+2025-11-23T10:38:52.513141833Z #12 1.988 Lockfile is up to date, resolution step is skipped
+2025-11-23T10:38:52.671382056Z #12 2.146 Already up to date
+2025-11-23T10:38:54.479350381Z #12 3.954 
+2025-11-23T10:38:54.479370272Z #12 3.954 ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2025-11-23T10:38:54.479375562Z #12 3.954 │                                                                              │
+2025-11-23T10:38:54.479379532Z #12 3.954 │   Ignored build scripts: core-js, esbuild.                                   │
+2025-11-23T10:38:54.479384162Z #12 3.954 │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2025-11-23T10:38:54.479389892Z #12 3.954 │   to run scripts.                                                            │
+2025-11-23T10:38:54.479394062Z #12 3.954 │                                                                              │
+2025-11-23T10:38:54.479399942Z #12 3.954 ╰──────────────────────────────────────────────────────────────────────────────╯
+2025-11-23T10:38:54.479412573Z #12 3.954 
+2025-11-23T10:38:54.678326506Z #12 4.003 Done in 2.7s using pnpm v10.23.0
+2025-11-23T10:39:14.525706356Z #12 24.00 src/components/ui/calendar.tsx(7,21): error TS2305: Module '"react-day-picker"' has no exported member 'getDefaultClassNames'.
+2025-11-23T10:39:14.677749082Z #12 24.00 src/components/ui/calendar.tsx(55,9): error TS2353: Object literal may only specify known properties, and 'button_next' does not exist in type 'Partial<StyledElement<string>>'.
+2025-11-23T10:39:14.700464017Z #12 24.00 src/components/ui/calendar.tsx(121,9): error TS2353: Object literal may only specify known properties, and 'Root' does not exist in type 'CustomComponents'.
+2025-11-23T10:39:14.700500488Z #12 24.00 src/components/ui/calendar.tsx(152,9): error TS1117: An object literal cannot have multiple properties with the same name.
+2025-11-23T10:39:14.700507288Z #12 24.00 src/components/ui/calendar.tsx(164,24): error TS2339: Property 'children' does not exist on type 'WeekNumberProps'.
+2025-11-23T10:39:14.700512678Z #12 24.00 src/components/ui/calendar.tsx(182,3): error TS2339: Property 'day' does not exist on type 'ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>'.
+2025-11-23T10:39:14.700517249Z #12 24.00 src/components/ui/calendar.tsx(183,3): error TS2339: Property 'modifiers' does not exist on type 'ClassAttributes<HTMLButtonElement> & ButtonHTMLAttributes<HTMLButtonElement>'.
+2025-11-23T10:39:14.700521669Z #12 24.00 src/const.ts(1,42): error TS2307: Cannot find module '@shared/const' or its corresponding type declarations.
+2025-11-23T10:39:14.700527449Z #12 24.00 src/pages/AdvancedCharts.tsx(130,7): error TS2353: Object literal may only specify known properties, and 'overlay' does not exist in type 'DeepPartial<HistogramStyleOptions & SeriesOptionsCommon>'.
+2025-11-23T10:39:14.70056119Z #12 24.00 src/pages/AlternativeInvestments.tsx(520,30): error TS2769: No overload matches this call.
+2025-11-23T10:39:14.7005702Z #12 24.00   Overload 1 of 2, '(props: Props): Bar', gave the following error.
+2025-11-23T10:39:14.70057456Z #12 24.00     Type '(entry: any) => string' is not assignable to type 'string'.
+2025-11-23T10:39:14.70057975Z #12 24.00   Overload 2 of 2, '(props: Props, context: any): Bar', gave the following error.
+2025-11-23T10:39:14.70058393Z #12 24.00     Type '(entry: any) => string' is not assignable to type 'string'.
+2025-11-23T10:39:14.70058845Z #12 24.00 src/pages/QuantitativeAlpha.tsx(160,56): error TS2551: Property 'generateMLSignals' does not exist on type 'QuantitativeAlphaService'. Did you mean 'generateSignals'?
+2025-11-23T10:39:14.70059384Z #12 24.00 src/pages/QuantitativeAlpha.tsx(165,56): error TS2339: Property 'getAlternativeData' does not exist on type 'QuantitativeAlphaService'.
+2025-11-23T10:39:14.700598271Z #12 24.00 src/pages/QuantitativeAlpha.tsx(170,57): error TS2339: Property 'runBacktest' does not exist on type 'QuantitativeAlphaService'.
+2025-11-23T10:39:14.700602551Z #12 24.00 src/pages/QuantitativeAlpha.tsx(175,60): error TS2339: Property 'walkForwardAnalysis' does not exist on type 'QuantitativeAlphaService'.
+2025-11-23T10:39:14.700606911Z #12 24.00 src/pages/QuantitativeAlpha.tsx(180,57): error TS2339: Property 'calculateEnsembleSignals' does not exist on type 'QuantitativeAlphaService'.
+2025-11-23T10:39:14.700645272Z #12 24.00 src/pages/QuantitativeAlpha.tsx(185,58): error TS2554: Expected 2 arguments, but got 0.
+2025-11-23T10:39:14.700654602Z #12 24.00 src/pages/QuantitativeAlpha.tsx(186,34): error TS2345: Argument of type '{ optimalAllocation: { [symbol: string]: number; }; expectedReturn: number; expectedVolatility: number; sharpeRatio: number; }' is not assignable to parameter of type 'SetStateAction<PortfolioOptimization>'.
+2025-11-23T10:39:14.700675202Z #12 24.00   Type '{ optimalAllocation: { [symbol: string]: number; }; expectedReturn: number; expectedVolatility: number; sharpeRatio: number; }' is missing the following properties from type 'PortfolioOptimization': constraintViolation, riskMetrics, efficientFrontier
+2025-11-23T10:39:14.700678762Z #12 24.00 src/pages/QuantitativeAlpha.tsx(190,57): error TS2339: Property 'getStockUniverse' does not exist on type 'QuantitativeAlphaService'.
+2025-11-23T10:39:14.700681782Z #12 24.00 src/pages/QuantitativeAlpha.tsx(282,75): error TS2339: Property 'totalValue' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700684482Z #12 24.00 src/pages/QuantitativeAlpha.tsx(283,77): error TS2339: Property 'optimizationResults' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700687523Z #12 24.00 src/pages/QuantitativeAlpha.tsx(922,62): error TS2339: Property 'strategy' does not exist on type 'BacktestResult'.
+2025-11-23T10:39:14.700690553Z #12 24.00 src/pages/QuantitativeAlpha.tsx(930,94): error TS2339: Property 'totalReturn' does not exist on type 'BacktestResult'.
+2025-11-23T10:39:14.700693433Z #12 24.00 src/pages/QuantitativeAlpha.tsx(946,79): error TS2339: Property 'alpha' does not exist on type 'BacktestResult'.
+2025-11-23T10:39:14.700699563Z #12 24.00 src/pages/QuantitativeAlpha.tsx(950,62): error TS2339: Property 'informationRatio' does not exist on type 'BacktestResult'.
+2025-11-23T10:39:14.700702333Z #12 24.00 src/pages/QuantitativeAlpha.tsx(954,98): error TS2339: Property 'numberOfTrades' does not exist on type 'BacktestResult'.
+2025-11-23T10:39:14.700704903Z #12 24.00 src/pages/QuantitativeAlpha.tsx(955,100): error TS2339: Property 'avgHoldingPeriod' does not exist on type 'BacktestResult'.
+2025-11-23T10:39:14.700713323Z #12 24.00 src/pages/QuantitativeAlpha.tsx(988,68): error TS2339: Property 'strategy' does not exist on type 'WalkForwardAnalysis'.
+2025-11-23T10:39:14.700716343Z #12 24.00 src/pages/QuantitativeAlpha.tsx(994,71): error TS2339: Property 'validPeriods' does not exist on type 'WalkForwardAnalysis'.
+2025-11-23T10:39:14.700719093Z #12 24.00 src/pages/QuantitativeAlpha.tsx(994,95): error TS2339: Property 'totalPeriods' does not exist on type 'WalkForwardAnalysis'.
+2025-11-23T10:39:14.700721894Z #12 24.00 src/pages/QuantitativeAlpha.tsx(998,88): error TS2551: Property 'avgOutOfSampleReturn' does not exist on type 'WalkForwardAnalysis'. Did you mean 'outOfSampleReturn'?
+2025-11-23T10:39:14.700724703Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1002,71): error TS2551: Property 'avgOutOfSampleSharpe' does not exist on type 'WalkForwardAnalysis'. Did you mean 'outOfSampleSharpe'?
+2025-11-23T10:39:14.700727474Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1006,71): error TS2339: Property 'stabilityScore' does not exist on type 'WalkForwardAnalysis'.
+2025-11-23T10:39:14.700730064Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1010,93): error TS2339: Property 'bestPeriod' does not exist on type 'WalkForwardAnalysis'.
+2025-11-23T10:39:14.700732704Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1067,67): error TS2339: Property 'name' does not exist on type 'EnsembleModel'.
+2025-11-23T10:39:14.700735504Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1068,67): error TS2339: Property 'optimizationMethod' does not exist on type 'EnsembleModel'.
+2025-11-23T10:39:14.700738594Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1074,87): error TS2339: Property 'totalReturn' does not exist on type 'EnsembleModel'.
+2025-11-23T10:39:14.700741264Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1078,70): error TS2339: Property 'sharpeRatio' does not exist on type 'EnsembleModel'.
+2025-11-23T10:39:14.700744164Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1082,100): error TS2339: Property 'maxDrawdown' does not exist on type 'EnsembleModel'.
+2025-11-23T10:39:14.700752664Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1086,87): error TS2339: Property 'winRate' does not exist on type 'EnsembleModel'.
+2025-11-23T10:39:14.700755404Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1125,69): error TS2339: Property 'optimizationResults' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700758344Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1131,69): error TS2339: Property 'optimizationResults' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700761234Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1137,52): error TS2339: Property 'optimizationResults' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700764064Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1143,69): error TS2339: Property 'optimizationResults' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700766615Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1155,52): error TS2339: Property 'positions' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700769335Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1177,46): error TS2339: Property 'rebalancingTriggers' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700771835Z #12 24.00 src/pages/QuantitativeAlpha.tsx(1187,54): error TS2339: Property 'rebalancingTriggers' does not exist on type 'PortfolioOptimization'.
+2025-11-23T10:39:14.700774895Z #12 24.00 src/pages/SupplyChainIntelligence.tsx(63,8): error TS1261: Already included file name '/app/src/services/supplyChainService.ts' differs from file name '/app/src/services/SupplyChainService.ts' only in casing.
+2025-11-23T10:39:14.700778215Z #12 24.00   The file is in the program because:
+2025-11-23T10:39:14.700781205Z #12 24.00     Imported via "@/services/supplyChainService" from file '/app/src/pages/SupplyChainIntelligence.tsx'
+2025-11-23T10:39:14.700783965Z #12 24.00     Matched by include pattern 'src' in '/app/tsconfig.app.json'
+2025-11-23T10:39:14.700786915Z #12 24.00     Matched by include pattern 'src' in '/app/tsconfig.app.json'
+2025-11-23T10:39:14.700789755Z #12 24.00 src/services/QuantitativeAlphaService.ts(240,54): error TS2339: Property 'getRealTimeData' does not exist on type 'RealTimeFinancialService'.
+2025-11-23T10:39:14.700794615Z #12 24.00 src/services/QuantitativeAlphaService.ts(813,7): error TS2741: Property 'retailFootTraffic' is missing in type '{ nightLights: number; industrialActivity: number; shippingTraffic: number; agriculturalProduction: number; }' but required in type '{ nightLights: number; industrialActivity: number; shippingTraffic: number; agriculturalProduction: number; retailFootTraffic: number; }'.
+2025-11-23T10:39:14.700797725Z #12 24.00 src/services/QuantitativeAlphaService.ts(957,34): error TS2339: Property 'getRealTimeData' does not exist on type 'RealTimeFinancialService'.
+2025-11-23T10:39:14.978599577Z #12 24.45  ELIFECYCLE  Command failed with exit code 2.
+2025-11-23T10:39:15.140773241Z #12 24.50  ELIFECYCLE  Command failed with exit code 2.
+2025-11-23T10:39:15.140796402Z #12 ERROR: process "/bin/sh -c pnpm run build" did not complete successfully: exit code: 2
+2025-11-23T10:39:15.140801102Z ------
+2025-11-23T10:39:15.140805372Z  > [7/7] RUN pnpm run build:
+2025-11-23T10:39:15.140809542Z 24.00 src/pages/SupplyChainIntelligence.tsx(63,8): error TS1261: Already included file name '/app/src/services/supplyChainService.ts' differs from file name '/app/src/services/SupplyChainService.ts' only in casing.
+2025-11-23T10:39:15.140813762Z 24.00   The file is in the program because:
+2025-11-23T10:39:15.140819862Z 24.00     Imported via "@/services/supplyChainService" from file '/app/src/pages/SupplyChainIntelligence.tsx'
+2025-11-23T10:39:15.140823893Z 24.00     Matched by include pattern 'src' in '/app/tsconfig.app.json'
+2025-11-23T10:39:15.140827413Z 24.00     Matched by include pattern 'src' in '/app/tsconfig.app.json'
+2025-11-23T10:39:15.140844163Z 24.00 src/services/QuantitativeAlphaService.ts(240,54): error TS2339: Property 'getRealTimeData' does not exist on type 'RealTimeFinancialService'.
+2025-11-23T10:39:15.140850253Z 24.00 src/services/QuantitativeAlphaService.ts(813,7): error TS2741: Property 'retailFootTraffic' is missing in type '{ nightLights: number; industrialActivity: number; shippingTraffic: number; agriculturalProduction: number; }' but required in type '{ nightLights: number; industrialActivity: number; shippingTraffic: number; agriculturalProduction: number; retailFootTraffic: number; }'.
+2025-11-23T10:39:15.140854053Z 24.00 src/services/QuantitativeAlphaService.ts(957,34): error TS2339: Property 'getRealTimeData' does not exist on type 'RealTimeFinancialService'.
+2025-11-23T10:39:15.140857423Z 24.45  ELIFECYCLE  Command failed with exit code 2.
+2025-11-23T10:39:15.140861323Z 24.50  ELIFECYCLE  Command failed with exit code 2.
+2025-11-23T10:39:15.140864644Z ------
+2025-11-23T10:39:15.141432387Z Dockerfile:20
+2025-11-23T10:39:15.141440727Z --------------------
+2025-11-23T10:39:15.141444197Z   18 |     
+2025-11-23T10:39:15.141447557Z   19 |     # Build dell'applicazione
+2025-11-23T10:39:15.141450497Z   20 | >>> RUN pnpm run build
+2025-11-23T10:39:15.141453097Z   21 |     
+2025-11-23T10:39:15.141455957Z   22 |     # Espone la porta
+2025-11-23T10:39:15.141458477Z --------------------
+2025-11-23T10:39:15.141461128Z error: failed to solve: process "/bin/sh -c pnpm run build" did not complete successfully: exit code: 2
+2025-11-23T10:39:15.158643273Z error: exit status 1
