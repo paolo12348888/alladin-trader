@@ -9,8 +9,9 @@ WORKDIR /app
 # Copia i file di configurazione delle dipendenze
 COPY package.json pnpm-lock.yaml* ./
 
-# Installa le dipendenze usando pnpm
-RUN pnpm install --frozen-lockfile
+# Installa le dipendenze usando pnpm con fallback
+# Prova prima con frozen-lockfile, se fallisce usa --no-frozen-lockfile
+RUN pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
 
 # Copia il resto dei file del progetto
 COPY . .
