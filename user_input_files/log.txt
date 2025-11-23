@@ -1,0 +1,96 @@
+2025-11-23T09:45:27.385081371Z ==> Cloning from https://github.com/paolo12348888/alladin-trader
+2025-11-23T09:45:28.113240481Z ==> Checking out commit 76822550121c965471f1568f0defcdce0d743c03 in branch main
+2025-11-23T09:45:34.776582289Z #1 [internal] load build definition from Dockerfile
+2025-11-23T09:45:34.776612869Z #1 transferring dockerfile: 370B done
+2025-11-23T09:45:34.77661648Z #1 DONE 0.0s
+2025-11-23T09:45:34.77661897Z 
+2025-11-23T09:45:34.77662182Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-23T09:45:34.98294329Z #2 ...
+2025-11-23T09:45:34.982962771Z 
+2025-11-23T09:45:34.982966701Z #3 [auth] library/node:pull render-prod/docker-mirror-repository/library/node:pull token for us-west1-docker.pkg.dev
+2025-11-23T09:45:34.982971321Z #3 DONE 0.0s
+2025-11-23T09:45:35.133182108Z 
+2025-11-23T09:45:35.133206728Z #2 [internal] load metadata for docker.io/library/node:18-alpine
+2025-11-23T09:45:35.262093085Z #2 DONE 0.6s
+2025-11-23T09:45:35.401068622Z 
+2025-11-23T09:45:35.401104693Z #4 [internal] load .dockerignore
+2025-11-23T09:45:35.401107953Z #4 transferring context: 2B done
+2025-11-23T09:45:35.401110283Z #4 DONE 0.0s
+2025-11-23T09:45:35.401112373Z 
+2025-11-23T09:45:35.401116014Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:45:35.401118703Z #5 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2025-11-23T09:45:35.56299583Z #5 ...
+2025-11-23T09:45:35.56301271Z 
+2025-11-23T09:45:35.56301677Z #6 [internal] load build context
+2025-11-23T09:45:35.56302032Z #6 transferring context: 2.66MB 0.0s done
+2025-11-23T09:45:35.56302282Z #6 DONE 0.1s
+2025-11-23T09:45:35.563025Z 
+2025-11-23T09:45:35.56302799Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:45:35.860170785Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+2025-11-23T09:45:36.284211978Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e
+2025-11-23T09:45:42.415715305Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 6.3s done
+2025-11-23T09:45:42.415735706Z #5 DONE 7.1s
+2025-11-23T09:45:42.538973865Z 
+2025-11-23T09:45:42.539000005Z #5 [1/9] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-11-23T09:45:42.539005665Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.1s done
+2025-11-23T09:45:42.539009555Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0.0s done
+2025-11-23T09:45:42.539013335Z #5 DONE 7.2s
+2025-11-23T09:45:42.691658498Z 
+2025-11-23T09:45:42.691686649Z #7 [2/9] RUN npm install -g pnpm
+2025-11-23T09:45:44.039864044Z #7 1.499 
+2025-11-23T09:45:44.039884335Z #7 1.499 added 1 package in 1s
+2025-11-23T09:45:44.193011458Z #7 1.499 
+2025-11-23T09:45:44.193035098Z #7 1.499 1 package is looking for funding
+2025-11-23T09:45:44.193039708Z #7 1.499   run `npm fund` for details
+2025-11-23T09:45:44.193044448Z #7 1.502 npm notice
+2025-11-23T09:45:44.193049209Z #7 1.502 npm notice New major version of npm available! 10.8.2 -> 11.6.3
+2025-11-23T09:45:44.193053299Z #7 1.502 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.3
+2025-11-23T09:45:44.193057649Z #7 1.502 npm notice To update run: npm install -g npm@11.6.3
+2025-11-23T09:45:44.193061569Z #7 1.502 npm notice
+2025-11-23T09:45:45.150831621Z #7 DONE 2.6s
+2025-11-23T09:45:45.302361835Z 
+2025-11-23T09:45:45.302387146Z #8 [3/9] WORKDIR /app
+2025-11-23T09:45:45.34940092Z #8 DONE 0.2s
+2025-11-23T09:45:45.501483938Z 
+2025-11-23T09:45:45.501503009Z #9 [4/9] COPY package.json pnpm-lock.yaml ./
+2025-11-23T09:45:47.115937223Z #9 DONE 1.8s
+2025-11-23T09:45:47.268476111Z 
+2025-11-23T09:45:47.268500761Z #10 [5/9] COPY public ./public
+2025-11-23T09:45:48.941051498Z #10 DONE 1.8s
+2025-11-23T09:45:49.094153299Z 
+2025-11-23T09:45:49.09417912Z #11 [6/9] COPY src ./src
+2025-11-23T09:45:49.10924947Z #11 DONE 0.2s
+2025-11-23T09:45:49.352298261Z 
+2025-11-23T09:45:49.352318992Z #12 [7/9] COPY *.json *.js *.ts ./
+2025-11-23T09:45:49.352323462Z #12 DONE 0.1s
+2025-11-23T09:45:49.352326952Z 
+2025-11-23T09:45:49.352330512Z #13 [8/9] RUN pnpm install --frozen-lockfile
+2025-11-23T09:45:49.962693506Z #13 0.761  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+2025-11-23T09:45:49.962714116Z #13 0.761 
+2025-11-23T09:45:49.962719436Z #13 0.761 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2025-11-23T09:45:49.962725437Z #13 0.761 
+2025-11-23T09:45:49.962731617Z #13 0.761   Failure reason:
+2025-11-23T09:45:49.962738087Z #13 0.761   specifiers in the lockfile don't match specifiers in package.json:
+2025-11-23T09:45:49.962744317Z #13 0.761 * 4 dependencies were added: @tensorflow/tfjs@^4.20.0, @turf/turf@^7.2.0, brain.js@^2.0.0, ml-regression@^2.0.1
+2025-11-23T09:45:49.962750077Z #13 0.761 
+2025-11-23T09:45:50.094280362Z #13 ERROR: process "/bin/sh -c pnpm install --frozen-lockfile" did not complete successfully: exit code: 1
+2025-11-23T09:45:50.14942693Z ------
+2025-11-23T09:45:50.149443451Z  > [8/9] RUN pnpm install --frozen-lockfile:
+2025-11-23T09:45:50.149447841Z 0.761  ERR_PNPM_OUTDATED_LOCKFILE  Cannot install with "frozen-lockfile" because pnpm-lock.yaml is not up to date with <ROOT>/package.json
+2025-11-23T09:45:50.149450901Z 0.761 
+2025-11-23T09:45:50.149454391Z 0.761 Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"
+2025-11-23T09:45:50.149457331Z 0.761 
+2025-11-23T09:45:50.149460781Z 0.761   Failure reason:
+2025-11-23T09:45:50.149464041Z 0.761   specifiers in the lockfile don't match specifiers in package.json:
+2025-11-23T09:45:50.149467511Z 0.761 * 4 dependencies were added: @tensorflow/tfjs@^4.20.0, @turf/turf@^7.2.0, brain.js@^2.0.0, ml-regression@^2.0.1
+2025-11-23T09:45:50.149470301Z 0.761 
+2025-11-23T09:45:50.149473121Z ------
+2025-11-23T09:45:50.150193349Z Dockerfile:15
+2025-11-23T09:45:50.150210139Z --------------------
+2025-11-23T09:45:50.150214479Z   13 |     
+2025-11-23T09:45:50.150218979Z   14 |     # Installa dipendenze
+2025-11-23T09:45:50.150223029Z   15 | >>> RUN pnpm install --frozen-lockfile
+2025-11-23T09:45:50.150226699Z   16 |     
+2025-11-23T09:45:50.150230379Z   17 |     # Build
+2025-11-23T09:45:50.15023409Z --------------------
+2025-11-23T09:45:50.15023858Z error: failed to solve: process "/bin/sh -c pnpm install --frozen-lockfile" did not complete successfully: exit code: 1

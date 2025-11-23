@@ -54,7 +54,7 @@
         "id": "8",
         "content": "Test e push finale",
         "details": "1. Commit di tutte le correzioni\n2. Push su GitHub branch main\n3. Verificare che il deploy funzioni su Render",
-        "status": "in_progress",
+        "status": "completed",
         "priority": "high"
       }
     }
