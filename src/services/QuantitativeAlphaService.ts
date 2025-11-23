@@ -2,7 +2,6 @@
 // Machine Learning implementation for quantitative trading
 
 import * as tf from '@tensorflow/tfjs';
-import * as brain from 'brain.js';
 import { SimpleLinearRegression, MultipleLinearRegression, PolynomialRegression } from 'ml-regression';
 import * as turf from '@turf/turf';
 import RealTimeFinancialService from './RealTimeFinancialService';
