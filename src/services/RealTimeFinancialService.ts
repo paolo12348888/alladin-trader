@@ -488,6 +488,35 @@ export class RealTimeFinancialService {
     if (trackingError < 0.5 && correlation > 0.95) return 'Fair';
     return 'Poor';
   }
+
+  /**
+   * Get real-time data for a symbol
+   */
+  async getRealTimeData(symbol: string): Promise<any> {
+    try {
+      const data = await RealTimeFinancialService.getRealETFData(symbol);
+      return {
+        symbol,
+        price: data.meta.regularMarketPrice,
+        change: data.meta.regularMarketPrice - data.meta.previousClose,
+        changePercent: ((data.meta.regularMarketPrice - data.meta.previousClose) / data.meta.previousClose) * 100,
+        volume: data.meta.regularMarketVolume,
+        timestamp: new Date().toISOString(),
+        ...data
+      };
+    } catch (error) {
+      console.warn(`Failed to get real-time data for ${symbol}:`, error);
+      return {
+        symbol,
+        price: 0,
+        change: 0,
+        changePercent: 0,
+        volume: 0,
+        timestamp: new Date().toISOString(),
+        error: error
+      };
+    }
+  }
 }
 
 export default RealTimeFinancialService;

@@ -60,7 +60,7 @@ import {
   type ShippingAnalytics,
   type SentimentAnalysis,
   type CorrelationMatrix
-} from "@/services/supplyChainService";
+} from "@/services/SupplyChainService";
 
 interface OverviewMetrics {
   total_supply_points: number;

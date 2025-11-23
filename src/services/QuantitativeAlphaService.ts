@@ -814,7 +814,8 @@ class QuantitativeAlphaService {
         nightLights: Math.random() * 100,
         industrialActivity: Math.random() * 100,
         shippingTraffic: Math.random() * 1000,
-        agriculturalProduction: Math.random() * 100
+        agriculturalProduction: Math.random() * 100,
+        retailFootTraffic: Math.random() * 100
       },
       macroeconomicData: {
         realGDP: Math.random() * 20,

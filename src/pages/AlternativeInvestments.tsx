@@ -516,8 +516,7 @@ export default function AlternativeInvestments() {
                         labelFormatter={(label) => `Symbol: ${label}`}
                       />
                       <Bar 
-                        dataKey="change" 
-                        fill={(entry: any) => entry.change > 0 ? COLORS.secondary : COLORS.danger}
+                        dataKey="change"
                       >
                         {commodityPositions.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.price_change_percentage_24h > 0 ? COLORS.secondary : COLORS.danger} />
