@@ -133,7 +133,7 @@ export default function SupplyChainIntelligence() {
   const [satelliteData, setSatelliteData] = useState<SatelliteMonitoring[]>([]);
   const [shippingAnalytics, setShippingAnalytics] = useState<ShippingAnalytics[]>([]);
   const [sentimentData, setSentimentData] = useState<SentimentAnalysis[]>([]);
-  const [correlationMatrix, setCorrelationMatrix] = useState<CorrelationMatrix | null>(null);
+  const [correlationMatrix, setCorrelationMatrix] = useState<CorrelationMatrix[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Load all data on component mount
