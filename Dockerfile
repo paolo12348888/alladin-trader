@@ -12,7 +12,7 @@ COPY src ./src
 COPY *.json *.js *.ts ./
 
 # Installa dipendenze
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 
 # Build
 RUN pnpm run build:prod
