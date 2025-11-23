@@ -1007,7 +1007,9 @@ export default function QuantitativeAlpha() {
                             </div>
                             <div className="pt-2 border-t">
                               <p className="text-xs text-muted-foreground">Best Period:</p>
-                              <p className="text-sm font-medium">{formatPercentage(analysis.bestPeriod.return)}</p>
+                              <p className="text-sm font-medium">
+                                {formatPercentage(analysis.bestPeriod?.return || 0)}
+                              </p>
                             </div>
                           </div>
                         </CardContent>
@@ -1075,15 +1077,19 @@ export default function QuantitativeAlpha() {
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-sm">Sharpe Ratio:</span>
-                                <span className="font-medium">{model.sharpeRatio.toFixed(2)}</span>
+                                <span className="font-medium">{(model.sharpeRatio || 0).toFixed(2)}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-sm">Max Drawdown:</span>
-                                <span className="font-medium text-red-600">{formatPercentage(model.maxDrawdown)}</span>
+                                <span className="font-medium text-red-600">
+                                  {formatPercentage(model.maxDrawdown || 0)}
+                                </span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-sm">Win Rate:</span>
-                                <span className="font-medium">{formatPercentage(model.winRate)}</span>
+                                <span className="font-medium">
+                                  {formatPercentage(model.winRate || 0)}
+                                </span>
                               </div>
                             </div>
                           </CardContent>
@@ -1122,25 +1128,25 @@ export default function QuantitativeAlpha() {
                         <div className="p-4 border rounded-lg text-center">
                           <p className="text-sm text-muted-foreground">Expected Return</p>
                           <p className="text-2xl font-bold text-green-600">
-                            {formatPercentage(portfolioOptimization.optimizationResults.expectedReturn)}
+                            {formatPercentage(portfolioOptimization.optimizationResults?.expectedReturn || 0)}
                           </p>
                         </div>
                         <div className="p-4 border rounded-lg text-center">
                           <p className="text-sm text-muted-foreground">Expected Volatility</p>
                           <p className="text-2xl font-bold">
-                            {formatPercentage(portfolioOptimization.optimizationResults.expectedVolatility)}
+                            {formatPercentage(portfolioOptimization.optimizationResults?.expectedVolatility || 0)}
                           </p>
                         </div>
                         <div className="p-4 border rounded-lg text-center">
                           <p className="text-sm text-muted-foreground">Sharpe Ratio</p>
                           <p className="text-2xl font-bold">
-                            {portfolioOptimization.optimizationResults.sharpeRatio.toFixed(2)}
+                            {(portfolioOptimization.optimizationResults?.sharpeRatio || 0).toFixed(2)}
                           </p>
                         </div>
                         <div className="p-4 border rounded-lg text-center">
                           <p className="text-sm text-muted-foreground">Max Drawdown</p>
                           <p className="text-2xl font-bold text-red-600">
-                            {formatPercentage(portfolioOptimization.optimizationResults.maxDrawdown)}
+                            {formatPercentage(portfolioOptimization.optimizationResults?.maxDrawdown || 0)}
                           </p>
                         </div>
                       </div>
@@ -1152,19 +1158,19 @@ export default function QuantitativeAlpha() {
                         </CardHeader>
                         <CardContent>
                           <div className="space-y-4">
-                            {portfolioOptimization.positions.slice(0, 10).map((position, index) => (
+                            {(portfolioOptimization.positions || []).slice(0, 10).map((position, index) => (
                               <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
                                 <div>
                                   <h4 className="font-semibold">{position.symbol}</h4>
                                   <p className="text-sm text-muted-foreground">
-                                    Target: {(position.targetWeight * 100).toFixed(2)}% | 
-                                    Current: {(position.currentWeight * 100).toFixed(2)}%
+                                    Target: {((position.targetWeight || 0) * 100).toFixed(2)}% | 
+                                    Current: {((position.currentWeight || 0) * 100).toFixed(2)}%
                                   </p>
                                 </div>
                                 <div className="text-right">
-                                  <p className="font-medium">{formatPercentage(position.expectedReturn)}</p>
+                                  <p className="font-medium">{formatPercentage(position.expectedReturn || 0)}</p>
                                   <p className="text-sm text-muted-foreground">
-                                    Signal: {position.signalStrength.toFixed(0)}
+                                    Signal: {(position.signalStrength || 0).toFixed(0)}
                                   </p>
                                 </div>
                               </div>
@@ -1174,7 +1180,7 @@ export default function QuantitativeAlpha() {
                       </Card>
 
                       {/* Rebalancing Triggers */}
-                      {portfolioOptimization.rebalancingTriggers.length > 0 && (
+                      {(portfolioOptimization.rebalancingTriggers || []).length > 0 && (
                         <Card>
                           <CardHeader>
                             <CardTitle className="flex items-center gap-2">
@@ -1184,7 +1190,7 @@ export default function QuantitativeAlpha() {
                           </CardHeader>
                           <CardContent>
                             <div className="space-y-3">
-                              {portfolioOptimization.rebalancingTriggers.slice(0, 5).map((trigger, index) => (
+                              {(portfolioOptimization.rebalancingTriggers || []).slice(0, 5).map((trigger, index) => (
                                 <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
                                   <div>
                                     <h4 className="font-semibold">{trigger.symbol}</h4>
@@ -1195,7 +1201,7 @@ export default function QuantitativeAlpha() {
                                       {trigger.action}
                                     </Badge>
                                     <span className="text-sm">
-                                      {(trigger.currentWeight * 100).toFixed(2)}%
+                                      {((trigger.currentWeight || 0) * 100).toFixed(2)}%
                                     </span>
                                   </div>
                                 </div>

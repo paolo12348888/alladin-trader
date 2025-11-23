@@ -74,11 +74,17 @@ export interface ModelPerformance {
 }
 
 export interface BacktestResult {
+  strategy: string;
   returns: number[];
   cumulativeReturn: number;
+  totalReturn: number;
   winRate: number;
   sharpeRatio: number;
   maxDrawdown: number;
+  alpha: number;
+  informationRatio: number;
+  numberOfTrades: number;
+  avgHoldingPeriod: number;
   trades: Array<{
     entryDate: string;
     exitDate: string;
@@ -97,12 +103,22 @@ export interface BacktestResult {
 }
 
 export interface WalkForwardAnalysis {
+  strategy: string;
+  validPeriods: number;
+  totalPeriods: number;
+  avgOutOfSampleReturn: number;
+  avgOutOfSampleSharpe: number;
+  stabilityScore: number;
   outOfSampleReturn: number;
   outOfSampleSharpe: number;
   inSampleReturn: number;
   inSampleSharpe: number;
   decayRate: number;
   stability: number;
+  bestPeriod: {
+    return: number;
+    sharpe: number;
+  };
   periods: Array<{
     period: string;
     inSampleReturn: number;
@@ -113,11 +129,17 @@ export interface WalkForwardAnalysis {
 }
 
 export interface EnsembleModel {
+  name: string;
   type: 'stacking' | 'voting' | 'bagging';
   models: string[];
   weights: number[];
   performance: ModelPerformance;
   lastTrained: string;
+  optimizationMethod: string;
+  totalReturn: number;
+  sharpeRatio: number;
+  maxDrawdown: number;
+  winRate: number;
   prediction: {
     action: 'BUY' | 'SELL' | 'HOLD';
     confidence: number;
@@ -127,12 +149,32 @@ export interface EnsembleModel {
 }
 
 export interface PortfolioOptimization {
+  totalValue: number;
   optimalAllocation: { [symbol: string]: number };
   expectedReturn: number;
   expectedVolatility: number;
   sharpeRatio: number;
   constraintViolation: string[];
   riskMetrics: RiskMetrics;
+  optimizationResults: {
+    expectedReturn: number;
+    expectedVolatility: number;
+    sharpeRatio: number;
+    maxDrawdown: number;
+  };
+  positions: Array<{
+    symbol: string;
+    targetWeight: number;
+    currentWeight: number;
+    expectedReturn: number;
+    signalStrength: number;
+  }>;
+  rebalancingTriggers: Array<{
+    symbol: string;
+    action: 'BUY' | 'SELL';
+    currentWeight: number;
+    reason: string;
+  }>;
   efficientFrontier: Array<{
     return: number;
     volatility: number;
@@ -916,7 +958,7 @@ class QuantitativeAlphaService {
     };
   }
 
-  async optimizePortfolio(signals: MLSignal[], allocation: { [symbol: string]: number }): Promise<{
+  async optimizePortfolioAllocation(signals: MLSignal[], allocation: { [symbol: string]: number }): Promise<{
     optimalAllocation: { [symbol: string]: number };
     expectedReturn: number;
     expectedVolatility: number;
@@ -959,6 +1001,213 @@ class QuantitativeAlphaService {
       this.setCache(cacheKey, data);
       return data;
     });
+  }
+
+  // Public methods used by QuantitativeAlpha.tsx
+  async generateMLSignals(): Promise<MLSignal[]> {
+    const symbols = Array.from({ length: 50 }, (_, i) => `STOCK_${i + 1}`);
+    return this.generateSignals(symbols);
+  }
+
+  async getAlternativeData(): Promise<AlternativeData[]> {
+    const symbols = Array.from({ length: 20 }, (_, i) => `STOCK_${i + 1}`);
+    return Promise.all(symbols.map(symbol => this.extractAlternativeData(symbol)));
+  }
+
+  async runBacktest(): Promise<BacktestResult[]> {
+    const strategies = ['Random Forest', 'Neural Network', 'SVM', 'Ensemble'];
+    return strategies.map(strategy => ({
+      strategy,
+      returns: Array.from({ length: 252 }, () => (Math.random() - 0.4) * 0.05),
+      cumulativeReturn: Math.random() * 50,
+      totalReturn: Math.random() * 30,
+      winRate: 50 + Math.random() * 30,
+      sharpeRatio: 0.5 + Math.random() * 1.5,
+      maxDrawdown: Math.random() * 20,
+      alpha: Math.random() * 10,
+      informationRatio: Math.random() * 2,
+      numberOfTrades: Math.floor(50 + Math.random() * 100),
+      avgHoldingPeriod: 30 + Math.random() * 60,
+      trades: Array.from({ length: 10 }, () => ({
+        entryDate: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toISOString(),
+        exitDate: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+        symbol: `STOCK_${Math.floor(Math.random() * 50) + 1}`,
+        action: Math.random() > 0.5 ? 'BUY' as const : 'SELL' as const,
+        entryPrice: 100 + Math.random() * 50,
+        exitPrice: 100 + Math.random() * 50,
+        pnl: (Math.random() - 0.4) * 10
+      })),
+      monthlyReturns: Array.from({ length: 24 }, (_, i) => {
+        const month = new Date(2022, i).toLocaleDateString('it-IT', { month: 'short' });
+        return [month, (Math.random() - 0.4) * 0.1];
+      }).reduce((acc, [month, value]) => ({ ...acc, [month]: value }), {}),
+      drawdownPeriods: Array.from({ length: 5 }, () => ({
+        start: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toISOString(),
+        end: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+        maxDrawdown: Math.random() * 15
+      }))
+    }));
+  }
+
+  async walkForwardAnalysis(): Promise<WalkForwardAnalysis[]> {
+    const strategies = ['Random Forest', 'Neural Network', 'SVM', 'Ensemble'];
+    return strategies.map(strategy => ({
+      strategy,
+      validPeriods: Math.floor(8 + Math.random() * 4),
+      totalPeriods: 12,
+      avgOutOfSampleReturn: (Math.random() - 0.2) * 0.3,
+      avgOutOfSampleSharpe: 0.5 + Math.random() * 1.0,
+      stabilityScore: 70 + Math.random() * 20,
+      outOfSampleReturn: (Math.random() - 0.2) * 0.3,
+      outOfSampleSharpe: 0.5 + Math.random() * 1.0,
+      inSampleReturn: (Math.random() - 0.1) * 0.4,
+      inSampleSharpe: 0.8 + Math.random() * 1.2,
+      decayRate: Math.random() * 0.1,
+      stability: 70 + Math.random() * 20,
+      bestPeriod: {
+        return: (Math.random() - 0.2) * 0.5,
+        sharpe: 1.0 + Math.random() * 2.0
+      },
+      periods: Array.from({ length: 12 }, (_, i) => ({
+        period: `Period ${i + 1}`,
+        inSampleReturn: (Math.random() - 0.1) * 0.4,
+        outOfSampleReturn: (Math.random() - 0.2) * 0.3,
+        inSampleSharpe: 0.8 + Math.random() * 1.2,
+        outOfSampleSharpe: 0.5 + Math.random() * 1.0
+      }))
+    }));
+  }
+
+  async calculateEnsembleSignals(): Promise<EnsembleModel[]> {
+    const models = [
+      { name: 'Voting Ensemble', type: 'voting' as const, optimizationMethod: 'Equal Weight' },
+      { name: 'Stacking Ensemble', type: 'stacking' as const, optimizationMethod: 'Grid Search' },
+      { name: 'Bagging Ensemble', type: 'bagging' as const, optimizationMethod: 'Bootstrap' },
+      { name: 'Weighted Voting', type: 'voting' as const, optimizationMethod: 'Sharpe Ratio' }
+    ];
+
+    return models.map(model => ({
+      name: model.name,
+      type: model.type,
+      optimizationMethod: model.optimizationMethod,
+      models: ['RandomForest', 'NeuralNetwork', 'SVM'],
+      weights: [0.33, 0.34, 0.33],
+      performance: {
+        accuracy: 0.7 + Math.random() * 0.2,
+        precision: 0.7 + Math.random() * 0.2,
+        recall: 0.7 + Math.random() * 0.2,
+        f1Score: 0.7 + Math.random() * 0.2,
+        sharpeRatio: 1.0 + Math.random() * 1.0,
+        maxDrawdown: Math.random() * 15,
+        totalReturn: Math.random() * 20,
+        volatility: Math.random() * 20,
+        calmarRatio: Math.random() * 2,
+        sortinoRatio: Math.random() * 2,
+        jensenAlpha: Math.random() * 10,
+        treynorRatio: Math.random() * 20
+      },
+      lastTrained: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+      totalReturn: Math.random() * 20,
+      sharpeRatio: 1.0 + Math.random() * 1.0,
+      maxDrawdown: Math.random() * 15,
+      winRate: 50 + Math.random() * 30,
+      prediction: {
+        action: 'BUY' as const,
+        confidence: 0.6 + Math.random() * 0.3,
+        probability: 0.6 + Math.random() * 0.3,
+        modelContributions: {
+          RandomForest: 0.33,
+          NeuralNetwork: 0.34,
+          SVM: 0.33
+        }
+      }
+    }));
+  }
+
+  async optimizePortfolio(): Promise<PortfolioOptimization> {
+    const symbols = Array.from({ length: 20 }, (_, i) => `STOCK_${i + 1}`);
+    const totalValue = 1000000 + Math.random() * 500000;
+
+    const positions = symbols.slice(0, 10).map(symbol => ({
+      symbol,
+      targetWeight: Math.random() * 0.15,
+      currentWeight: Math.random() * 0.15,
+      expectedReturn: (Math.random() - 0.2) * 0.3,
+      signalStrength: 50 + Math.random() * 50
+    }));
+
+    // Normalize weights
+    const totalWeight = positions.reduce((sum, p) => sum + p.targetWeight, 0);
+    positions.forEach(p => {
+      p.targetWeight /= totalWeight;
+      p.currentWeight /= totalWeight;
+    });
+
+    return {
+      totalValue,
+      optimalAllocation: positions.reduce((acc, p) => ({ ...acc, [p.symbol]: p.targetWeight }), {}),
+      expectedReturn: (Math.random() - 0.1) * 0.25,
+      expectedVolatility: Math.random() * 20,
+      sharpeRatio: 0.8 + Math.random() * 1.2,
+      constraintViolation: [],
+      riskMetrics: {
+        var95: Math.random() * 5,
+        var99: Math.random() * 8,
+        expectedShortfall: Math.random() * 10,
+        beta: Math.random() * 2,
+        correlation: Math.random() * 2 - 1,
+        volatility: Math.random() * 30,
+        skewness: Math.random() * 4 - 2,
+        kurtosis: Math.random() * 10 - 5
+      },
+      optimizationResults: {
+        expectedReturn: (Math.random() - 0.1) * 0.25,
+        expectedVolatility: Math.random() * 20,
+        sharpeRatio: 0.8 + Math.random() * 1.2,
+        maxDrawdown: Math.random() * 15
+      },
+      positions,
+      rebalancingTriggers: symbols.slice(0, 5).map(symbol => ({
+        symbol,
+        action: Math.random() > 0.5 ? 'BUY' as const : 'SELL' as const,
+        currentWeight: Math.random() * 0.1,
+        reason: Math.random() > 0.5 ? 'Signal Strength Change' : 'Risk Rebalancing'
+      })),
+      efficientFrontier: Array.from({ length: 10 }, () => ({
+        return: (Math.random() - 0.1) * 0.3,
+        volatility: Math.random() * 25,
+        sharpe: 0.5 + Math.random() * 1.5,
+        weights: symbols.slice(0, 5).reduce((acc, symbol, i) => {
+          acc[symbol] = Math.random() * 0.3;
+          return acc;
+        }, {} as { [symbol: string]: number })
+      }))
+    };
+  }
+
+  async getStockUniverse(): Promise<StockUniverse[]> {
+    return [{
+      symbols: Array.from({ length: 100 }, (_, i) => `STOCK_${i + 1}`),
+      sectors: Array.from({ length: 100 }, (_, i) => {
+        const sectors = ['Technology', 'Healthcare', 'Finance', 'Energy', 'Consumer'];
+        return [`STOCK_${i + 1}`, sectors[Math.floor(Math.random() * sectors.length)]];
+      }).reduce((acc, [symbol, sector]) => ({ ...acc, [symbol]: sector }), {}),
+      marketCaps: Array.from({ length: 100 }, (_, i) => {
+        const symbol = `STOCK_${i + 1}`;
+        return [symbol, 1000000 + Math.random() * 10000000];
+      }).reduce((acc, [symbol, marketCap]) => ({ ...acc, [symbol]: marketCap }), {}),
+      liquidity: Array.from({ length: 100 }, (_, i) => {
+        const symbol = `STOCK_${i + 1}`;
+        return [symbol, Math.random() * 1000000];
+      }).reduce((acc, [symbol, liquidity]) => ({ ...acc, [symbol]: liquidity }), {}),
+      screeningCriteria: {
+        minMarketCap: 1000000,
+        maxMarketCap: 1000000000,
+        minLiquidity: 100000,
+        excludedSectors: ['Tobacco', 'Gambling'],
+        requiredExchanges: ['NYSE', 'NASDAQ']
+      }
+    }];
   }
 
   private getFromCache(key: string): any {

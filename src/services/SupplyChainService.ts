@@ -48,22 +48,118 @@ export interface AlternativeData {
 export interface AlphaSignal {
   id: string;
   symbol: string; // XAUUSD, XAGUSD, CRUDE, etc.
-  signal: 'LONG' | 'SHORT';
+  action: 'LONG' | 'SHORT';
+  strategy: string;
   confidence: number; // 0-1
-  entryPrice: number;
-  targetPrice: number;
-  stopLoss: number;
-  expectedReturn: number; // percentuale
-  timeframe: '1D' | '3D' | '7D' | '10D';
-  reasons: string[];
-  riskScore: number; // 0-1
+  entry_price: number;
+  target_price: number;
+  stop_loss: number;
+  expected_return: number; // percentuale
+  catalysts: string[];
+  risk_reward_ratio: number;
+  time_horizon: string;
   timestamp: string;
   validUntil: string;
-  supplyChainFactors: {
-    nodeId: string;
-    impact: number; // -1 a +1
-    weight: number; // 0-1
-  }[];
+  supply_chain_factor: string;
+}
+
+export interface SupplyChainPoint {
+  id: string;
+  name: string;
+  type: 'port' | 'mine' | 'factory' | 'refinery' | 'terminal';
+  location: string;
+  country: string;
+  status: 'operational' | 'disrupted' | 'maintenance' | 'offline';
+  risk_level: 'low' | 'medium' | 'high' | 'critical';
+  capacity_utilization: number; // 0-100%
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+}
+
+export interface CommodityPrediction {
+  symbol: string;
+  name: string;
+  current_price: number;
+  predicted_price_24h: number;
+  predicted_price_7d: number;
+  price_change_24h: number;
+  price_change_7d: number;
+  confidence: number;
+  technical_signals: {
+    short_term_trend: 'bullish' | 'bearish' | 'neutral';
+    medium_term_trend: 'bullish' | 'bearish' | 'neutral';
+  };
+  disruption_factors: string[];
+  timestamp: string;
+}
+
+export interface SupplyChainDisruption {
+  id: string;
+  title: string;
+  description: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  location: string;
+  estimated_impact: number; // 0-1
+  probability: number; // 0-1
+  current_status: 'confirmed' | 'mitigating' | 'resolved';
+  affected_commodities: string[];
+  start_date: string;
+  timestamp: string;
+}
+
+export interface SupplyChainRiskMetrics {
+  overall_risk_score: number;
+  geopolitical_risk: number;
+  transport_risk: number;
+  labor_risk: number;
+  weather_risk: number;
+  infrastructure_risk: number;
+  concentration_risk: number;
+  timestamp: string;
+}
+
+export interface SatelliteMonitoring {
+  location: string;
+  activity_indicators: {
+    port_activity: number;
+    mining_activity: number;
+  };
+  congestion_level: number;
+  infrastructure_health: number;
+  timestamp: string;
+}
+
+export interface ShippingAnalytics {
+  route_name: string;
+  congestion_level: 'low' | 'medium' | 'high' | 'critical';
+  current_transit_time: number; // days
+  available_capacity: number;
+  used_capacity: number;
+  freight_rates: {
+    spot_rate: number;
+    future_rate: number;
+  };
+  timestamp: string;
+}
+
+export interface SentimentAnalysis {
+  source: string;
+  sentiment_score: number; // -1 a +1
+  impact_on_prices: 'positive' | 'negative' | 'neutral';
+  positive_mentions: number;
+  negative_mentions: number;
+  neutral_mentions: number;
+  timestamp: string;
+}
+
+export interface CorrelationMatrix {
+  symbol: string;
+  correlation_with: string;
+  correlation_value: number;
+  strength: 'very_strong' | 'strong' | 'moderate' | 'weak' | 'very_weak';
+  timestamp: string;
 }
 
 export interface RiskAssessment {
@@ -457,127 +553,112 @@ export class SupplyChainService {
       {
         id: 'signal-xauusd-001',
         symbol: 'XAUUSD',
-        signal: 'LONG',
-        confidence: 0.78,
-        entryPrice: 2018.45,
-        targetPrice: 2055.00,
-        stopLoss: 2002.00,
-        expectedReturn: 1.81,
-        timeframe: '3D',
-        reasons: [
+        action: 'LONG',
+        strategy: 'Supply Chain Disruption',
+        confidence: 78,
+        entry_price: 2018.45,
+        target_price: 2055.00,
+        stop_loss: 2002.00,
+        expected_return: 1.81,
+        catalysts: [
           'South Africa gold mines disruption risk +22%',
           'Positive sentiment in gold sector (+0.65)',
           'Port congestion increasing costs',
           'Geopolitical tensions supporting safe-haven demand'
         ],
-        riskScore: 0.25,
+        risk_reward_ratio: 2.3,
+        time_horizon: '3D',
         timestamp: new Date().toISOString(),
         validUntil: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
-        supplyChainFactors: [
-          { nodeId: 'mine-witwatersrand', impact: 0.35, weight: 0.8 },
-          { nodeId: 'port-rotterdam', impact: 0.15, weight: 0.3 },
-          { nodeId: 'port-shanghai', impact: 0.10, weight: 0.2 }
-        ]
+        supply_chain_factor: 'South Africa mine disruption + shipping cost inflation'
       },
       {
         id: 'signal-crude-001',
         symbol: 'CRUDE',
-        signal: 'SHORT',
-        confidence: 0.82,
-        entryPrice: 78.34,
-        targetPrice: 74.50,
-        stopLoss: 80.20,
-        expectedReturn: -4.90,
-        timeframe: '7D',
-        reasons: [
+        action: 'SHORT',
+        strategy: 'Supply Chain Disruption',
+        confidence: 82,
+        entry_price: 78.34,
+        target_price: 74.50,
+        stop_loss: 80.20,
+        expected_return: -4.90,
+        catalysts: [
           'Texas refineries utilization at 88%, capacity concerns',
           'Saudi Arabia supply increase signals',
           'Shipping freight rates declining (-8%)',
           'Oil sentiment cooling (0.45 from 0.65)'
         ],
-        riskScore: 0.30,
+        risk_reward_ratio: 1.8,
+        time_horizon: '7D',
         timestamp: new Date().toISOString(),
         validUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-        supplyChainFactors: [
-          { nodeId: 'plant-texas', impact: -0.40, weight: 0.9 },
-          { nodeId: 'plant-arabiansaudi', impact: -0.25, weight: 0.7 },
-          { nodeId: 'port-dubai', impact: -0.15, weight: 0.4 }
-        ]
+        supply_chain_factor: 'Texas refinery capacity + Saudi supply increase'
       },
       {
         id: 'signal-lithium-001',
         symbol: 'LITHIUM',
-        signal: 'LONG',
-        confidence: 0.85,
-        entryPrice: 45600,
-        targetPrice: 48900,
-        stopLoss: 44200,
-        expectedReturn: 7.24,
-        timeframe: '10D',
-        reasons: [
+        action: 'LONG',
+        strategy: 'Supply Chain Disruption',
+        confidence: 85,
+        entry_price: 45600,
+        target_price: 48900,
+        stop_loss: 44200,
+        expected_return: 7.24,
+        catalysts: [
           'Greenbushes mine utilization 92%, near capacity',
           'Battery sector sentiment very positive (+0.78)',
           'EV demand acceleration continuing',
           'Supply constraints in Q1 2024 expected'
         ],
-        riskScore: 0.20,
+        risk_reward_ratio: 2.1,
+        time_horizon: '10D',
         timestamp: new Date().toISOString(),
         validUntil: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(),
-        supplyChainFactors: [
-          { nodeId: 'mine-greenbushes', impact: 0.45, weight: 0.95 },
-          { nodeId: 'port-singapore', impact: 0.20, weight: 0.5 },
-          { nodeId: 'port-losangeles', impact: 0.15, weight: 0.3 }
-        ]
+        supply_chain_factor: 'Greenbushes capacity constraints + EV demand surge'
       },
       {
         id: 'signal-wheat-001',
         symbol: 'WHEAT',
-        signal: 'LONG',
-        confidence: 0.72,
-        entryPrice: 587.25,
-        targetPrice: 612.50,
-        stopLoss: 575.00,
-        expectedReturn: 4.30,
-        timeframe: '7D',
-        reasons: [
+        action: 'LONG',
+        strategy: 'Supply Chain Disruption',
+        confidence: 72,
+        entry_price: 587.25,
+        target_price: 612.50,
+        stop_loss: 575.00,
+        expected_return: 4.30,
+        catalysts: [
           'Ukraine port activity at 45%, historical low',
           'Kansas grain elevators at 76% capacity',
           'Global food security concerns rising',
           'Weather disruptions in key growing regions'
         ],
-        riskScore: 0.35,
+        risk_reward_ratio: 1.9,
+        time_horizon: '7D',
         timestamp: new Date().toISOString(),
         validUntil: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
-        supplyChainFactors: [
-          { nodeId: 'plant-ukraine', impact: 0.50, weight: 0.8 },
-          { nodeId: 'plant-kansas', impact: 0.25, weight: 0.6 },
-          { nodeId: 'port-rotterdam', impact: 0.15, weight: 0.4 }
-        ]
+        supply_chain_factor: 'Ukraine port disruption + weather disruptions'
       },
       {
         id: 'signal-copper-001',
         symbol: 'COPPER',
-        signal: 'SHORT',
-        confidence: 0.68,
-        entryPrice: 3.8245,
-        targetPrice: 3.6920,
-        stopLoss: 3.8900,
-        expectedReturn: -3.46,
-        timeframe: '7D',
-        reasons: [
+        action: 'SHORT',
+        strategy: 'Supply Chain Disruption',
+        confidence: 68,
+        entry_price: 3.8245,
+        target_price: 3.6920,
+        stop_loss: 3.8900,
+        expected_return: -3.46,
+        catalysts: [
           'Las Bambas mine protests, 18% disruption risk',
           'China manufacturing PMI cooling',
           'Infrastructure spending concerns',
           'Shipping delays improving, reducing costs'
         ],
-        riskScore: 0.40,
+        risk_reward_ratio: 1.6,
+        time_horizon: '7D',
         timestamp: new Date().toISOString(),
         validUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-        supplyChainFactors: [
-          { nodeId: 'mine-lasbambas', impact: -0.35, weight: 0.7 },
-          { nodeId: 'port-losangeles', impact: -0.20, weight: 0.5 },
-          { nodeId: 'port-shanghai', impact: -0.10, weight: 0.3 }
-        ]
+        supply_chain_factor: 'Las Bambas protests + China PMI cooling'
       }
     ];
 
@@ -971,6 +1052,284 @@ export class SupplyChainService {
     ];
 
     return predictions;
+  }
+
+  // ==================== METODI MANCANTI ====================
+
+  public async getOverviewMetrics(): Promise<{
+    total_supply_points: number;
+    operational_points: number;
+    risk_alerts: number;
+    active_disruptions: number;
+    signal_generated_today: number;
+    average_confidence: number;
+  }> {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const operationalPoints = this.supplyChainNodes.filter(node => 
+      node.currentUtilization > 70
+    ).length;
+    
+    const riskAlerts = this.supplyChainNodes.filter(node => 
+      node.disruptionProbability > 0.2
+    ).length;
+    
+    return {
+      total_supply_points: this.supplyChainNodes.length,
+      operational_points: operationalPoints,
+      risk_alerts: riskAlerts,
+      active_disruptions: 3,
+      signal_generated_today: 5,
+      average_confidence: 76.4
+    };
+  }
+
+  public async getSupplyChainPoints(): Promise<SupplyChainPoint[]> {
+    await new Promise(resolve => setTimeout(resolve, 120));
+    
+    return this.supplyChainNodes.map(node => ({
+      id: node.id,
+      name: node.name,
+      type: node.type as 'port' | 'mine' | 'factory' | 'refinery' | 'terminal',
+      location: node.location,
+      country: node.country,
+      status: node.disruptionProbability < 0.1 ? 'operational' : 
+              node.disruptionProbability < 0.2 ? 'maintenance' : 
+              node.disruptionProbability < 0.3 ? 'disrupted' : 'offline',
+      risk_level: node.disruptionProbability < 0.1 ? 'low' : 
+                  node.disruptionProbability < 0.2 ? 'medium' : 
+                  node.disruptionProbability < 0.3 ? 'high' : 'critical',
+      capacity_utilization: node.currentUtilization,
+      coordinates: node.coordinates
+    }));
+  }
+
+  public async getCommodityPredictions(): Promise<CommodityPrediction[]> {
+    await new Promise(resolve => setTimeout(resolve, 180));
+    
+    return [
+      {
+        symbol: 'XAUUSD',
+        name: 'Gold',
+        current_price: 2018.45,
+        predicted_price_24h: 2025.30,
+        predicted_price_7d: 2078.50,
+        price_change_24h: 6.85,
+        price_change_7d: 60.05,
+        confidence: 82,
+        technical_signals: {
+          short_term_trend: 'bullish',
+          medium_term_trend: 'bullish'
+        },
+        disruption_factors: [
+          'South Africa mine power outages',
+          'Port congestion increasing costs',
+          'Central bank purchases'
+        ],
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'XAGUSD',
+        name: 'Silver',
+        current_price: 24.82,
+        predicted_price_24h: 24.95,
+        predicted_price_7d: 25.55,
+        price_change_24h: 0.13,
+        price_change_7d: 0.73,
+        confidence: 78,
+        technical_signals: {
+          short_term_trend: 'bullish',
+          medium_term_trend: 'neutral'
+        },
+        disruption_factors: [
+          'Mexican mine water scarcity',
+          'Industrial demand recovery'
+        ],
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'CRUDE',
+        name: 'Crude Oil',
+        current_price: 78.34,
+        predicted_price_24h: 77.85,
+        predicted_price_7d: 74.50,
+        price_change_24h: -0.49,
+        price_change_7d: -3.84,
+        confidence: 82,
+        technical_signals: {
+          short_term_trend: 'bearish',
+          medium_term_trend: 'bearish'
+        },
+        disruption_factors: [
+          'Texas refinery capacity concerns',
+          'OPEC+ production decisions',
+          'China demand recovery'
+        ],
+        timestamp: new Date().toISOString()
+      }
+    ];
+  }
+
+  public async getDisruptions(): Promise<SupplyChainDisruption[]> {
+    await new Promise(resolve => setTimeout(resolve, 150));
+    
+    return [
+      {
+        id: 'disruption-001',
+        title: 'South Africa Gold Mines Power Outages',
+        description: 'Eskom implementing scheduled power cuts affecting 22% of gold production capacity in Witwatersrand region',
+        severity: 'high',
+        location: 'Johannesburg, South Africa',
+        estimated_impact: 0.35,
+        probability: 0.22,
+        current_status: 'confirmed',
+        affected_commodities: ['XAUUSD'],
+        start_date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+        timestamp: new Date().toISOString()
+      },
+      {
+        id: 'disruption-002',
+        title: 'Ukraine Grain Export Restrictions',
+        description: 'Ongoing conflict continues to limit grain exports from key Ukrainian ports',
+        severity: 'critical',
+        location: 'Odessa, Ukraine',
+        estimated_impact: 0.50,
+        probability: 0.40,
+        current_status: 'confirmed',
+        affected_commodities: ['WHEAT', 'CORN'],
+        start_date: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+        timestamp: new Date().toISOString()
+      },
+      {
+        id: 'disruption-003',
+        title: 'Texas Gulf Coast Hurricane Risk',
+        description: 'Hurricane season approaching, refineries preparing for potential disruptions',
+        severity: 'medium',
+        location: 'Houston, Texas',
+        estimated_impact: 0.25,
+        probability: 0.15,
+        current_status: 'mitigating',
+        affected_commodities: ['CRUDE', 'GAS'],
+        start_date: new Date().toISOString(),
+        timestamp: new Date().toISOString()
+      }
+    ];
+  }
+
+  public async getAlphaSignals(): Promise<AlphaSignal[]> {
+    return this.generateAlphaSignals();
+  }
+
+  public async getRiskMetrics(): Promise<SupplyChainRiskMetrics> {
+    await new Promise(resolve => setTimeout(resolve, 130));
+    
+    return {
+      overall_risk_score: 68,
+      geopolitical_risk: 72,
+      transport_risk: 58,
+      labor_risk: 45,
+      weather_risk: 62,
+      infrastructure_risk: 51,
+      concentration_risk: 69,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  public async getSatelliteData(): Promise<SatelliteMonitoring[]> {
+    await new Promise(resolve => setTimeout(resolve, 140));
+    
+    return this.alternativeData.satellite.map(data => ({
+      location: data.location,
+      activity_indicators: {
+        port_activity: data.activityLevel,
+        mining_activity: data.location.includes('Mine') ? data.activityLevel : 0
+      },
+      congestion_level: data.congestionScore,
+      infrastructure_health: data.infrastructureHealth,
+      timestamp: data.timestamp
+    }));
+  }
+
+  public async getShippingAnalytics(): Promise<ShippingAnalytics[]> {
+    await new Promise(resolve => setTimeout(resolve, 160));
+    
+    return this.alternativeData.shipping.map(data => ({
+      route_name: data.route,
+      congestion_level: data.expectedDelay > 3 ? 'high' : 
+                       data.expectedDelay > 1 ? 'medium' : 'low',
+      current_transit_time: data.expectedDelay,
+      available_capacity: data.tonnage,
+      used_capacity: Math.floor(data.tonnage * 0.75),
+      freight_rates: {
+        spot_rate: data.freightRate,
+        future_rate: data.freightRate * 0.95
+      },
+      timestamp: data.timestamp
+    }));
+  }
+
+  public async getSentimentData(): Promise<SentimentAnalysis[]> {
+    await new Promise(resolve => setTimeout(resolve, 110));
+    
+    return this.alternativeData.sentiment.map(data => ({
+      source: data.sector,
+      sentiment_score: data.score,
+      impact_on_prices: data.score > 0.2 ? 'positive' : 
+                       data.score < -0.2 ? 'negative' : 'neutral',
+      positive_mentions: Math.floor(data.volume * Math.max(0, data.score + 0.5)),
+      negative_mentions: Math.floor(data.volume * Math.max(0, -data.score + 0.5)),
+      neutral_mentions: Math.floor(data.volume * 0.4),
+      timestamp: data.timestamp
+    }));
+  }
+
+  public async getCorrelationMatrix(): Promise<CorrelationMatrix[]> {
+    await new Promise(resolve => setTimeout(resolve, 170));
+    
+    return [
+      {
+        symbol: 'XAUUSD',
+        correlation_with: 'XAGUSD',
+        correlation_value: 0.78,
+        strength: 'strong',
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'XAUUSD',
+        correlation_with: 'CRUDE',
+        correlation_value: -0.23,
+        strength: 'weak',
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'XAGUSD',
+        correlation_with: 'LITHIUM',
+        correlation_value: 0.45,
+        strength: 'moderate',
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'CRUDE',
+        correlation_with: 'COPPER',
+        correlation_value: 0.52,
+        strength: 'moderate',
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'WHEAT',
+        correlation_with: 'CRUDE',
+        correlation_value: 0.18,
+        strength: 'weak',
+        timestamp: new Date().toISOString()
+      },
+      {
+        symbol: 'LITHIUM',
+        correlation_with: 'COPPER',
+        correlation_value: 0.61,
+        strength: 'strong',
+        timestamp: new Date().toISOString()
+      }
+    ];
   }
 
   // ==================== METODI DI SUPPORTO ====================
