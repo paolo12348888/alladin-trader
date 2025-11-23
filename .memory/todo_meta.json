@@ -18,7 +18,7 @@
       "3": {
         "id": "3",
         "content": "Correggere versione ml-regression nel package.json",
-        "details": "Aggiornata versione ml-regression da ^2.0.1 (inesistente) a ^6.3.0 (versione corretta). Repository pushato con successo su GitHub.",
+        "details": "Rimosso completamente brain.js dalle dipendenze e dall'import di QuantitativeAlphaService.ts. Versione ml-regression corretta a ^6.3.0. Repository pushato con successo su GitHub.",
         "status": "completed",
         "priority": "high"
       }
